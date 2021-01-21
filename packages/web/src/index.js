@@ -14,7 +14,7 @@ ReactDOM.render(
   <SettingsProvider>
     <App/>
   </SettingsProvider>,
-document.getElementById('root')
+  document.getElementById('root')
 )
 
 /*

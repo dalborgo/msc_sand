@@ -52,7 +52,7 @@ const Error404 = () => {
           gutterBottom
           variant={mobileDevice ? 'h4' : 'h1'}
         >
-          <FormattedMessage defaultMessage="404: La pagina che stai cercando non è qui!" id="error404.wrong_page" />
+          <FormattedMessage defaultMessage="404: The page you try to open is not here!" id="error404.wrong_page" />
         </Typography>
         <Typography
           align="center"
@@ -85,7 +85,7 @@ const Error404 = () => {
             onClick={() => history.goBack()}
             variant="outlined"
           >
-            <FormattedMessage defaultMessage="Torna alla pagina precedente" id="error404.go_back_button" />
+            <FormattedMessage defaultMessage="Go back to the previous page" id="error404.go_back_button" />
           </Button>
         </div>
       </Container>

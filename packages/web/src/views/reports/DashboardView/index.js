@@ -30,7 +30,7 @@ const DashboardView = () => {
         <StandardHeader
           breadcrumb={
             <StandardBreadcrumb
-              crumbs={[{ to: '/app', name: 'DashBoard' }, { name: 'Report' }]}
+              crumbs={[{ name: 'Home' }]}
             />
           }
         >

@@ -50,7 +50,7 @@ const RightDrawer = memo(function RightDrawer ({ open, switchOpen, children, tit
 })
 
 RightDrawer.defaultProps = {
-  title: <FormattedMessage defaultMessage="Filtri" id="common.filters"/>,
+  title: <FormattedMessage defaultMessage="Filters" id="common.filters"/>,
 }
 
 export default RightDrawer

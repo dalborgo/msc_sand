@@ -1,11 +1,11 @@
 [
   {
     "id": "auth.connect",
-    "defaultMessage": "Collegati alla piattaforma"
+    "defaultMessage": "Connect to the platform"
   },
   {
     "id": "auth.login.enter",
-    "defaultMessage": "Entra"
+    "defaultMessage": "Enter"
   },
   {
     "id": "auth.login.error_to_fetch_codes",
@@ -25,15 +25,27 @@
   },
   {
     "id": "auth.login.password_required",
-    "defaultMessage": "Password obbligatoria!"
+    "defaultMessage": "The password is required!"
   },
   {
     "id": "auth.login.username_required",
-    "defaultMessage": "Nome utente obbligatorio!"
+    "defaultMessage": "The user is required!"
   },
   {
     "id": "auth.login.wrong_credentials",
-    "defaultMessage": "Nome utente o password errati!"
+    "defaultMessage": "User or password are not correct!"
+  },
+  {
+    "id": "booking.container_data",
+    "defaultMessage": "Container data"
+  },
+  {
+    "id": "booking.new_booking.header_title",
+    "defaultMessage": "Create a New Booking"
+  },
+  {
+    "id": "booking.number_container",
+    "defaultMessage": "Number of containers booked"
   },
   {
     "id": "closing_day.discounts",
@@ -57,7 +69,7 @@
   },
   {
     "id": "common.apply",
-    "defaultMessage": "Applica"
+    "defaultMessage": "Apply"
   },
   {
     "id": "common.building",
@@ -65,7 +77,7 @@
   },
   {
     "id": "common.clear",
-    "defaultMessage": "Pulisci"
+    "defaultMessage": "Clear"
   },
   {
     "id": "common.closedBy",
@@ -105,7 +117,7 @@
   },
   {
     "id": "common.filters",
-    "defaultMessage": "Filtri"
+    "defaultMessage": "Filters"
   },
   {
     "id": "common.income",
@@ -113,11 +125,11 @@
   },
   {
     "id": "common.language",
-    "defaultMessage": "Lingua"
+    "defaultMessage": "Date and currency"
   },
   {
     "id": "common.loading",
-    "defaultMessage": "Caricamento..."
+    "defaultMessage": "Loading…"
   },
   {
     "id": "common.price",
@@ -145,7 +157,7 @@
   },
   {
     "id": "common.settings",
-    "defaultMessage": "Impostazioni"
+    "defaultMessage": "Settings"
   },
   {
     "id": "common.table",
@@ -157,7 +169,7 @@
   },
   {
     "id": "common.theme",
-    "defaultMessage": "Tema"
+    "defaultMessage": "Theme"
   },
   {
     "id": "common.to",
@@ -186,6 +198,10 @@
   {
     "id": "common.type_of_payment",
     "defaultMessage": "Tipo di Pagamento"
+  },
+  {
+    "id": "common.username",
+    "defaultMessage": "Username"
   },
   {
     "id": "common.wait",
@@ -217,7 +233,7 @@
   },
   {
     "id": "error404.go_back_button",
-    "defaultMessage": "Torna alla pagina precedente"
+    "defaultMessage": "Go back to the previous page"
   },
   {
     "id": "error404.goto_home_page_description",
@@ -225,11 +241,11 @@
   },
   {
     "id": "error404.wrong_page",
-    "defaultMessage": "404: La pagina che stai cercando non è qui!"
+    "defaultMessage": "404: The page you try to open is not here!"
   },
   {
     "id": "error500.contact_vendors",
-    "defaultMessage": "Contatta i fornitori del programma."
+    "defaultMessage": "Contact the software provider."
   },
   {
     "id": "error500.goto_home_page",
@@ -241,35 +257,35 @@
   },
   {
     "id": "error500.reload_current_page",
-    "defaultMessage": "Ricarica la pagina"
+    "defaultMessage": "Reload the page"
   },
   {
     "id": "error500.retry",
-    "defaultMessage": "Riprova"
+    "defaultMessage": "Retry"
   },
   {
     "id": "error500.something_wrong",
-    "defaultMessage": "500: Ooops, qualcosa è andato storto!"
+    "defaultMessage": "500: Ooops, Somethin goes wrong!"
   },
   {
     "id": "error503.service_unavailable!",
-    "defaultMessage": "503: Servizio non disponibile!"
+    "defaultMessage": "503: Service unavailable!"
   },
   {
     "id": "general.network_error",
-    "defaultMessage": "Errore di rete: servizio non raggiungibile!"
+    "defaultMessage": "Network error: service not available!"
   },
   {
     "id": "language.de",
-    "defaultMessage": "Tedesco"
+    "defaultMessage": "German"
   },
   {
     "id": "language.en-gb",
-    "defaultMessage": "Inglese"
+    "defaultMessage": "English"
   },
   {
     "id": "language.it",
-    "defaultMessage": "Italiano"
+    "defaultMessage": "Italian"
   },
   {
     "id": "menu.closed_tables",
@@ -278,6 +294,14 @@
   {
     "id": "menu.closing_day",
     "defaultMessage": "Chiusure di giornata"
+  },
+  {
+    "id": "menu.new_booking",
+    "defaultMessage": "New booking"
+  },
+  {
+    "id": "menu.retrieve_certificate",
+    "defaultMessage": "Retrieve Certificate"
   },
   {
     "id": "menu.running_tables",
@@ -366,11 +390,23 @@
   },
   {
     "id": "role.role_admin",
-    "defaultMessage": "Amministratore"
+    "defaultMessage": "Admninistrator"
   },
   {
     "id": "role.role_customer",
     "defaultMessage": "Cliente"
+  },
+  {
+    "id": "sub.booking",
+    "defaultMessage": "Booking"
+  },
+  {
+    "id": "sub.certificates",
+    "defaultMessage": "Certificates"
+  },
+  {
+    "id": "sub.home",
+    "defaultMessage": "Home"
   },
   {
     "id": "sub.reports",
@@ -378,7 +414,7 @@
   },
   {
     "id": "table.no_data",
-    "defaultMessage": "Nessun risultato!"
+    "defaultMessage": "No results!"
   },
   {
     "id": "table.select_date",
@@ -386,11 +422,11 @@
   },
   {
     "id": "toolbar.settings.responsive_fonts",
-    "defaultMessage": "Font responsivi"
+    "defaultMessage": "Responsive Fonts"
   },
   {
     "id": "toolbar.settings.save",
-    "defaultMessage": "Salva Impostazioni"
+    "defaultMessage": "Save Settings"
   },
   {
     "id": "views.login.installation",

@@ -81,7 +81,7 @@ const ChangePaymentForm = memo(function ChangePaymentForm ({ onSubmit, data, isL
               </Grid>
               <Grid item style={{ margin: theme.spacing(2, 3), marginTop: theme.spacing(1) }}>
                 <Button color="secondary" disabled={!dirty || !values['income']} fullWidth type="submit" variant="contained">
-                  <FormattedMessage defaultMessage="Applica" id="common.apply"/>
+                  <FormattedMessage defaultMessage="Apply" id="common.apply"/>
                 </Button>
               </Grid>
             </Grid>

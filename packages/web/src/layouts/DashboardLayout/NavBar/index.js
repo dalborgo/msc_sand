@@ -98,7 +98,7 @@ function reduceChildRoutes ({
   return acc
 }
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
   mobileDrawer: {
     width: 256,
   },
@@ -111,6 +111,11 @@ const useStyles = makeStyles(() => ({
     cursor: 'pointer',
     width: 64,
     height: 64,
+  },
+  subheader: {
+    paddingTop: theme.spacing(1),
+    paddingBottom: 0, 
+    lineHeight: 2,
   },
 }))
 
@@ -180,6 +185,7 @@ const NavBar = ({ setMobileNavOpen, openMobile }) => {
                   subheader={
                     (
                       <ListSubheader
+                        className={classes.subheader}
                         disableGutters
                         disableSticky
                       >

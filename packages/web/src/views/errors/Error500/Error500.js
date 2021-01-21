@@ -57,9 +57,9 @@ const Error500 = ({ error, resetErrorBoundary }) => {
         >
           {
             isNetworkError ?
-              <FormattedMessage defaultMessage="503: Servizio non disponibile!" id="error503.service_unavailable!"/>
+              <FormattedMessage defaultMessage="503: Service unavailable!" id="error503.service_unavailable!"/>
               :
-              <FormattedMessage defaultMessage="500: Ooops, qualcosa è andato storto!" id="error500.something_wrong"/>
+              <FormattedMessage defaultMessage="500: Ooops, Somethin goes wrong!" id="error500.something_wrong"/>
           }
         </Typography>
         <Typography
@@ -69,7 +69,7 @@ const Error500 = ({ error, resetErrorBoundary }) => {
         >
           {
             !isNetworkError &&
-            <FormattedMessage defaultMessage="Contatta i fornitori del programma." id="error500.contact_vendors"/>
+            <FormattedMessage defaultMessage="Contact the software provider." id="error500.contact_vendors"/>
           }
           {error && <pre className={classes.pre}>{message}</pre>}
         </Typography>
@@ -100,7 +100,7 @@ const Error500 = ({ error, resetErrorBoundary }) => {
                 onClick={() => window.location.reload()} //window.location.replace(window.location.origin)
                 variant="outlined"
               >
-                <FormattedMessage defaultMessage="Ricarica la pagina" id="error500.reload_current_page"/>
+                <FormattedMessage defaultMessage="Reload the page" id="error500.reload_current_page"/>
               </Button>
               :
               <Button
@@ -108,7 +108,7 @@ const Error500 = ({ error, resetErrorBoundary }) => {
                 onClick={() => resetErrorBoundary()}
                 variant="outlined"
               >
-                <FormattedMessage defaultMessage="Riprova" id="error500.retry"/>
+                <FormattedMessage defaultMessage="Retry" id="error500.retry"/>
               </Button>
           }
         </div>

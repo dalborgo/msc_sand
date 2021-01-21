@@ -32,6 +32,11 @@ const useStyles = makeStyles(theme => ({
       minHeight: 32,
     },
   },
+  logo: {
+    [theme.breakpoints.down('sm')]: {
+      height: 40,
+    },
+  },
 }))
 
 const TopBar = ({
@@ -58,7 +63,7 @@ const TopBar = ({
             </SvgIcon>
           </IconButton>
         </Hidden>
-        <img alt="logo" src={`/static/images/logo_msc_${currentLogoVariant}.png`}/>
+        <img alt="logo" className={classes.logo} src={`/static/images/logo_msc_${currentLogoVariant}.png`}/>
         <Box
           flexGrow={1}
           ml={2}

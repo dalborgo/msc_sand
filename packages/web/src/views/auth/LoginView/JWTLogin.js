@@ -104,12 +104,13 @@ const JWTLogin = memo(({ className, ...rest }) => {
                 }
               }
               fullWidth
-              label="Nome Utente"
+              label={intl.formatMessage(messages.common_username)}
               margin="normal"
               name="username"
               onChange={handleChange}
               onFocus={focus}
               required
+              size="medium"
               type="text"
               value={values.username}
               variant="outlined"
@@ -143,8 +144,14 @@ const JWTLogin = memo(({ className, ...rest }) => {
               />
               {
                 errors.password && touched.password
-                  ? <FormHelperText className={classes.helperText} error
-                                    id="username-helper-text">{errors.password}</FormHelperText>
+                  ?
+                  <FormHelperText
+                    className={classes.helperText}
+                    error
+                    id="username-helper-text"
+                  >
+                    {errors.password}
+                  </FormHelperText>
                   : null
               }
             </FormControl>
@@ -157,7 +164,7 @@ const JWTLogin = memo(({ className, ...rest }) => {
                 type="submit"
                 variant="contained"
               >
-                <FormattedMessage defaultMessage="Entra" id="auth.login.enter"/>
+                <FormattedMessage defaultMessage="Enter" id="auth.login.enter"/>
               </Button>
             </Box>
           </form>

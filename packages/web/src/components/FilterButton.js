@@ -28,7 +28,7 @@ export default memo(function FilterButton ({ isActive, onClick }) {
         <SvgIcon fontSize="small">
           <FilterIcon/>
         </SvgIcon>
-        &nbsp;&nbsp;<FormattedMessage defaultMessage="Filtri" id="common.filters"/>
+        &nbsp;&nbsp;<FormattedMessage defaultMessage="Filters" id="common.filters"/>
       </Button>
     </ThemeProvider>
   )

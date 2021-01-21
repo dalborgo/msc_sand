@@ -216,7 +216,7 @@ const Settings = () => {
             onClick={handleSave}
             variant="contained"
           >
-            <FormattedMessage defaultMessage="Salva Impostazioni" id="toolbar.settings.save"/>
+            <FormattedMessage defaultMessage="Save Settings" id="toolbar.settings.save"/>
           </Button>
         </Box>
       </Popover>

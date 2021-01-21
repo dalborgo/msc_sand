@@ -108,6 +108,11 @@ const routes = [
       },
       {
         exact: true,
+        path: '/app/booking/new-booking',
+        component: lazy(() => import('src/views/booking/NewBooking')),
+      },
+      {
+        exact: true,
         path: '/app',
         component: () => <Redirect to="/app/reports/dashboard"/>,
       },

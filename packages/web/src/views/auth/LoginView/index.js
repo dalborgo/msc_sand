@@ -96,13 +96,13 @@ const LoginView = () => {
                     gutterBottom
                     variant="h2"
                   >
-                    <FormattedMessage defaultMessage="Entra" id="auth.login.enter"/>
+                    <FormattedMessage defaultMessage="Enter" id="auth.login.enter"/>
                   </Typography>
                   <Typography
                     color="textSecondary"
                     variant="body2"
                   >
-                    <FormattedMessage defaultMessage="Collegati alla piattaforma" id="auth.connect"/>
+                    <FormattedMessage defaultMessage="Connect to the platform" id="auth.connect"/>
                   </Typography>
                 </div>
                 <div className={classes.currentMethodIcon}/>

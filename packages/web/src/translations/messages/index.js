@@ -1,25 +1,37 @@
 import { defineMessages } from 'react-intl'
 
 export const messages = defineMessages({
-  mode_INVOICE: {
-    id: 'mode.INVOICE',
-    defaultMessage: 'Fattura',
+  booking_number_container: {
+    id: 'booking.number_container',
+    defaultMessage: 'Number of containers booked',
   },
-  mode_CHECK: {
-    id: 'mode.CHECK',
-    defaultMessage: 'Scontrino',
+  booking_weight: {
+    id: 'booking.weight',
+    defaultMessage: 'Weight',
   },
-  mode_5STELLE: {
-    id: 'mode.5STELLE',
-    defaultMessage: 'Addebito',
+  booking_value_goods: {
+    id: 'booking.value_goods',
+    defaultMessage: 'Value of the goods',
   },
-  mode_PRECHECK: {
-    id: 'mode.PRECHECK',
-    defaultMessage: 'Preconto',
+  booking_currency_goods: {
+    id: 'booking.currency_goods',
+    defaultMessage: 'Goods value currency',
+  },
+  booking_reefer_container: {
+    id: 'booking.reefer_container',
+    defaultMessage: 'Reefer Container',
+  },
+  accepted_by_msc: {
+    id: 'booking.accepted_by_msc',
+    defaultMessage: 'I declare to ship goods accepted by MSC',
   },
   common_tot: {
     id: 'common.tot',
     defaultMessage: 'Tot',
+  },
+  common_username: {
+    id: 'common.username',
+    defaultMessage: 'Username',
   },
   common_table: {
     id: 'common.table',
@@ -43,11 +55,11 @@ export const messages = defineMessages({
   },
   common_settings: {
     id: 'common.settings',
-    defaultMessage: 'Impostazioni',
+    defaultMessage: 'Settings',
   },
   common_language: {
     id: 'common.language',
-    defaultMessage: 'Lingua',
+    defaultMessage: 'Date and currency',
   },
   common_dividedPayment: {
     id: 'common.dividedPayment',
@@ -59,19 +71,19 @@ export const messages = defineMessages({
   },
   language_it: {
     id: 'language.it',
-    defaultMessage: 'Italiano',
+    defaultMessage: 'Italian',
   },
   language_de: {
     id: 'language.de',
-    defaultMessage: 'Tedesco',
+    defaultMessage: 'German',
   },
   'language_en-gb': {
     id: 'language.en-gb',
-    defaultMessage: 'Inglese',
+    defaultMessage: 'English',
   },
   common_theme: {
     id: 'common.theme',
-    defaultMessage: 'Tema',
+    defaultMessage: 'Theme',
   },
   common_price: {
     id: 'common.price',
@@ -91,11 +103,31 @@ export const messages = defineMessages({
   },
   role_admin: {
     id: 'role.role_admin',
-    defaultMessage: 'Amministratore',
+    defaultMessage: 'Admninistrator',
   },
   sub_reports: {
     id: 'sub.reports',
     defaultMessage: 'Report',
+  },
+  sub_booking: {
+    id: 'sub.booking',
+    defaultMessage: 'Booking',
+  },
+  sub_home: {
+    id: 'sub.home',
+    defaultMessage: 'Home',
+  },
+  sub_certificates: {
+    id: 'sub.certificates',
+    defaultMessage: 'Certificates',
+  },
+  menu_new_booking: {
+    id: 'menu.new_booking',
+    defaultMessage: 'New booking',
+  },
+  menu_retrieve_certificate: {
+    id: 'menu.retrieve_certificate',
+    defaultMessage: 'Retrieve Certificate',
   },
   menu_closing_day: {
     id: 'menu.closing_day',
@@ -175,7 +207,7 @@ export const messages = defineMessages({
   },
   network_error: {
     id: 'general.network_error',
-    defaultMessage: 'Errore di rete: servizio non raggiungibile!',
+    defaultMessage: 'Network error: service not available!',
   },
   installation: {
     id: 'auth.login.installation',
@@ -187,11 +219,11 @@ export const messages = defineMessages({
   },
   username_required: {
     id: 'auth.login.username_required',
-    defaultMessage: 'Nome utente obbligatorio!',
+    defaultMessage: 'The user is required!',
   },
   password_required: {
     id: 'auth.login.password_required',
-    defaultMessage: 'Password obbligatoria!',
+    defaultMessage: 'The password is required!',
   },
   installation_required: {
     id: 'auth.login.installation_required',
@@ -199,10 +231,10 @@ export const messages = defineMessages({
   },
   settings_responsive_fonts: {
     id: 'toolbar.settings.responsive_fonts',
-    defaultMessage: 'Font responsivi',
+    defaultMessage: 'Responsive Fonts',
   },
   LOGIN_WRONG_CREDENTIALS: {
     id: 'auth.login.wrong_credentials',
-    defaultMessage: 'Nome utente o password errati!',
+    defaultMessage: 'User or password are not correct!',
   },
 })

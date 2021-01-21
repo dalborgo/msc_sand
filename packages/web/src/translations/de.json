@@ -97,5 +97,14 @@
   "common.exportAll": "",
   "common.exportMenu": "",
   "common.exportTable": "",
-  "dashboard.title": ""
+  "dashboard.title": "",
+  "common.username": "",
+  "sub.home": "",
+  "menu.new_booking": "",
+  "sub.booking": "",
+  "menu.retrieve_certificate": "",
+  "sub.certificates": "",
+  "booking.new_booking.header_title": "",
+  "booking.container_data": "",
+  "booking.number_container": ""
 }

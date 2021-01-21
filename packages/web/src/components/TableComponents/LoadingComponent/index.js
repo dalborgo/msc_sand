@@ -10,12 +10,12 @@ const LoadingComponent = memo(function LoadingComponent ({ idle, isFetching, ...
       <Box display="flex" justifyContent="center" p={5}>
         {
           isFetching ?
-            <Typography><FormattedMessage defaultMessage="Caricamento..." id="common.loading"/></Typography>
+            <Typography><FormattedMessage defaultMessage="Loading…" id="common.loading"/></Typography>
             :
             idle === true ?
               <Typography><FormattedMessage defaultMessage="Ricerca per date" id="table.select_date"/></Typography>
               :
-              <Typography><FormattedMessage defaultMessage="Nessun risultato!" id="table.no_data"/></Typography>
+              <Typography><FormattedMessage defaultMessage="No results!" id="table.no_data"/></Typography>
         }
       </Box>
     </VirtualTable.Cell>

@@ -14,6 +14,10 @@ const baseOptions = {
   direction: 'ltr',
   typography,
   props: {
+    MuiTextField: {
+      variant: 'outlined',
+      size: 'small',
+    },
     MuiDialog: {
       TransitionComponent: Transition,
     },
