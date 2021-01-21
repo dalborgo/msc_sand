@@ -1,5 +1,5 @@
-import React from 'react'
-import { FastField, useFormikContext } from 'formik'
+import React, { memo } from 'react'
+import { FastField } from 'formik'
 import { Grid, makeStyles, TextField as TF } from '@material-ui/core'
 import NumberFormatComp from 'src/components/NumberFormatComp'
 import { focus } from 'src/utils/formik'
@@ -7,7 +7,7 @@ import { useIntl } from 'react-intl'
 import { messages } from 'src/translations/messages'
 
 const useStyles = makeStyles(theme => ({
-  default: {
+  divContainer: {
     '& .MuiInputLabel-root': {
       marginTop: 3,
       fontSize: '0.9rem',
@@ -22,14 +22,13 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const ContainerDataFields = () => {
+const ContainerDataFields = ({handleChange}) => {
   const classes = useStyles()
   const intl = useIntl()
   console.log('%cRENDER_FORM', 'color: orange')
-  //const formik = useFormik()
-  const { handleChange } = useFormikContext();
+
   return (
-    <div className={classes.default} id="bookingForm">
+    <div className={classes.divContainer} id="bookingForm">
       <Grid container>
         <Grid item>
           <FastField
@@ -127,4 +126,4 @@ const ContainerDataFields = () => {
   )
 }
 
-export default ContainerDataFields
+export default memo(ContainerDataFields)

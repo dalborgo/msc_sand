@@ -122,7 +122,7 @@ const JWTLogin = memo(({ className, ...rest }) => {
                 required
               >Password
               </InputLabel>
-              <Field //con fastfield non va
+              <Field
                 as={OutlinedInput}
                 endAdornment={
                   <InputAdornment position="end">
