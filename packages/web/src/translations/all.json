@@ -36,8 +36,16 @@
     "defaultMessage": "User or password are not correct!"
   },
   {
+    "id": "booking.accepted_by_msc",
+    "defaultMessage": "I declare to ship goods accepted by MSC"
+  },
+  {
     "id": "booking.container_data",
     "defaultMessage": "Container data"
+  },
+  {
+    "id": "booking.currency_goods",
+    "defaultMessage": "Goods value currency"
   },
   {
     "id": "booking.new_booking.header_title",
@@ -46,6 +54,18 @@
   {
     "id": "booking.number_container",
     "defaultMessage": "Number of containers booked"
+  },
+  {
+    "id": "booking.reefer_container",
+    "defaultMessage": "Reefer Container"
+  },
+  {
+    "id": "booking.value_goods",
+    "defaultMessage": "Value of the goods"
+  },
+  {
+    "id": "booking.weight",
+    "defaultMessage": "Weight"
   },
   {
     "id": "closing_day.discounts",

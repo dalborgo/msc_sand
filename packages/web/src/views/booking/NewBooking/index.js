@@ -47,11 +47,13 @@ const NewBooking = () => {
             weight: '121212121212',
             goodsValue: '',
             currencyGoods: 'EUR',
+            reeferContainer: true,
           }
         }
         onSubmit={
           values => {
             console.log(values)
+            return true
           }
         }
       >

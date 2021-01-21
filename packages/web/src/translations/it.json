@@ -106,5 +106,10 @@
   "sub.certificates": "Certificates",
   "booking.new_booking.header_title": "Create a New Booking",
   "booking.container_data": "Container data",
-  "booking.number_container": "Number of containers booked"
+  "booking.number_container": "Number of containers booked",
+  "booking.accepted_by_msc": "I declare to ship goods accepted by MSC",
+  "booking.currency_goods": "Goods value currency",
+  "booking.reefer_container": "Reefer Container",
+  "booking.value_goods": "Value of the goods",
+  "booking.weight": "Weight"
 }

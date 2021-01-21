@@ -1,35 +1,47 @@
 import React, { memo } from 'react'
-import { FastField } from 'formik'
-import { Grid, makeStyles, TextField as TF } from '@material-ui/core'
+import { FastField, Field } from 'formik'
+import { Grid, InputLabel, makeStyles, TextField as TF } from '@material-ui/core'
 import NumberFormatComp from 'src/components/NumberFormatComp'
 import { focus } from 'src/utils/formik'
 import { useIntl } from 'react-intl'
 import { messages } from 'src/translations/messages'
+import { Switch } from 'formik-material-ui'
+import { ToggleButtonGroup } from 'formik-material-ui-lab'
+import ToggleButton from '@material-ui/lab/ToggleButton'
 
 const useStyles = makeStyles(theme => ({
   divContainer: {
     '& .MuiInputLabel-root': {
-      marginTop: 3,
+      marginTop: 6,
       fontSize: '0.9rem',
     },
     '& .MuiInputBase-input': {
       marginTop: 5,
+    },
+    '& .MuiSwitch-root': {
+      marginTop: -2,
     },
   },
   field: {
     margin: theme.spacing(1, 1),
     backgroundColor: theme.palette.grey[100],
   },
+  inputLabel: {
+    paddingLeft: theme.spacing(1),
+  },
+  toggleButtonGroup: {
+    marginLeft: theme.spacing(1.5),
+  },
 }))
 
-const ContainerDataFields = ({handleChange}) => {
+const ContainerDataFields = ({ handleChange }) => {
   const classes = useStyles()
   const intl = useIntl()
   console.log('%cRENDER_FORM', 'color: orange')
-
+  
   return (
     <div className={classes.divContainer} id="bookingForm">
-      <Grid container>
+      <Grid alignItems="center" container>
         <Grid item>
           <FastField
             as={TF}
@@ -105,7 +117,6 @@ const ContainerDataFields = ({handleChange}) => {
             }
             select
             SelectProps={{ native: true }}
-            size="small"
             style={{ width: 150 }}
             variant="outlined"
           >
@@ -120,6 +131,44 @@ const ContainerDataFields = ({handleChange}) => {
               USD
             </option>
           </FastField>
+        </Grid>
+        <Grid item>
+          <InputLabel
+            className={classes.inputLabel}
+            htmlFor="currencyGoods"
+          >
+            {intl.formatMessage(messages['booking_currency_goods'])}
+            <Field
+              className={classes.toggleButtonGroup}
+              component={ToggleButtonGroup}
+              exclusive
+              name="currencyGoods"
+              size="small"
+              type="checkbox"
+            >
+              <ToggleButton value="EUR">
+                EUR
+              </ToggleButton>
+              <ToggleButton value="USD">
+                USD
+              </ToggleButton>
+            </Field>
+          </InputLabel>
+        </Grid>
+      </Grid>
+      <Grid container>
+        <Grid item>
+          <InputLabel
+            className={classes.inputLabel}
+            htmlFor="reeferContainer"
+          >
+            {intl.formatMessage(messages['booking_reefer_container'])}
+            <FastField
+              component={Switch}
+              name="reeferContainer"
+              type="checkbox"
+            />
+          </InputLabel>
         </Grid>
       </Grid>
     </div>

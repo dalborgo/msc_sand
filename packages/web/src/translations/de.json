@@ -106,5 +106,10 @@
   "sub.certificates": "",
   "booking.new_booking.header_title": "",
   "booking.container_data": "",
-  "booking.number_container": ""
+  "booking.number_container": "",
+  "booking.accepted_by_msc": "",
+  "booking.currency_goods": "",
+  "booking.reefer_container": "",
+  "booking.value_goods": "",
+  "booking.weight": ""
 }
