@@ -15,7 +15,6 @@ const HeaderDataFields = () => {
           fullWidth
           label={intl.formatMessage(messages['booking_sender'])}
           name="sender"
-          onFocus={focus}
         />
       </Grid>
       <Grid item sm={6} xs={12}>
@@ -24,7 +23,6 @@ const HeaderDataFields = () => {
           fullWidth
           label={intl.formatMessage(messages['booking_recipient'])}
           name="recipient"
-          onFocus={focus}
         />
       </Grid>
     </Grid>

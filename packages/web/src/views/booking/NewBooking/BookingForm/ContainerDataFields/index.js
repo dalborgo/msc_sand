@@ -41,7 +41,6 @@ const ContainerDataFields = ({ handleChange }) => {
             }
             label={intl.formatMessage(messages['booking_number_container'])}
             name="numberContainers"
-            onFocus={focus}
           />
         </Grid>
         <Grid item sm={6} xs={12}>
@@ -59,7 +58,6 @@ const ContainerDataFields = ({ handleChange }) => {
             }
             label={intl.formatMessage(messages['booking_weight'])}
             name="weight"
-            onFocus={focus}
           />
         </Grid>
         <Grid item sm={6} xs={12}>
@@ -77,7 +75,6 @@ const ContainerDataFields = ({ handleChange }) => {
             }
             label={intl.formatMessage(messages['booking_value_goods'])}
             name="goodsValue"
-            onFocus={focus}
           />
         </Grid>
         <Grid item sm={6} xs={12}>
@@ -120,6 +117,7 @@ const ContainerDataFields = ({ handleChange }) => {
                 handleChange(event)
               }
             }
+            onFocus={() => null}
             select
             SelectProps={{ native: true }}
           >
