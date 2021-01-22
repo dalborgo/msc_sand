@@ -1,5 +1,4 @@
 ## Msc Genova
 
-
-#### Richieste
-  - Lingua
+### Appunti
+  - Trim su campi

@@ -8,11 +8,11 @@ import HeaderDataFields from './HeaderDataFields'
 const useStyles = makeStyles(theme => ({
   divContainer: {
     '& .MuiInputLabel-root': {
-      marginTop: 8,
+      marginTop: 2,
       fontSize: '0.9rem',
     },
     '& .MuiInputBase-input': {
-      marginTop: 5,
+      backgroundColor: theme.palette.grey[100],
     },
     '& .MuiSwitch-root': {
       marginTop: -2,
@@ -20,6 +20,9 @@ const useStyles = makeStyles(theme => ({
     '& .MuiCard-root': {
       padding: theme.spacing(2),
       marginBottom: theme.spacing(2),
+    },
+    '& .MuiGrid-item': {
+      padding: theme.spacing(1,1,2,1),
     },
   },
 }))
@@ -37,7 +40,7 @@ const BookingForm = () => {
         <Typography color="secondary" gutterBottom>
           <FormattedMessage defaultMessage="Container data" id="booking.container_data"/>
         </Typography>
-        <Card>
+        <Card id="mio">
           <ContainerDataFields handleChange={handleChange}/>
         </Card>
       </div>

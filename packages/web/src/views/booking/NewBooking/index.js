@@ -43,13 +43,14 @@ const NewBooking = () => {
       <Formik
         initialValues={
           {
-            sender: 'MSC for whom it may concern',
-            recipient: 'To the orders as per Bill of Lading',
-            numberContainers: '',
-            weight: '121212121212',
-            goodsValue: '',
             currencyGoods: 'EUR',
+            goodsValue: '',
+            moreGoodsDetails: '',
+            numberContainers: '',
+            recipient: 'To the orders as per Bill of Lading',
             reeferContainer: true,
+            sender: 'MSC for whom it may concern',
+            weight: '121212121212',
           }
         }
         onSubmit={

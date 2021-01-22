@@ -1,38 +1,20 @@
 import React, { memo } from 'react'
 import { FastField } from 'formik'
-import { Card, Grid, makeStyles, TextField as TF } from '@material-ui/core'
+import { Card, Grid, TextField as TF } from '@material-ui/core'
 import { focus } from 'src/utils/formik'
 import { useIntl } from 'react-intl'
 import { messages } from 'src/translations/messages'
 
-const useStyles = makeStyles(theme => ({
-  cardMarginRight: {
-    marginRight: theme.spacing(2),
-  },
-  field: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.grey[100],
-  },
-  inputLabel: {
-    paddingLeft: theme.spacing(1),
-  },
-  toggleButtonGroup: {
-    marginLeft: theme.spacing(1.5),
-  },
-}))
-
-const HeaderDataFields = ({ handleChange }) => {
-  const classes = useStyles()
+const HeaderDataFields = () => {
   const intl = useIntl()
   console.log('%cRENDER_FORM', 'color: orange')
   
   return (
     <Grid alignItems="center" container>
-      <Grid item>
-        <Card className={classes.cardMarginRight}>
+      <Grid item style={{ paddingLeft: 0 }}>
+        <Card>
           <FastField
             as={TF}
-            className={classes.field}
             label={intl.formatMessage(messages['booking_sender'])}
             name="sender"
             onFocus={focus}
@@ -44,7 +26,6 @@ const HeaderDataFields = ({ handleChange }) => {
         <Card>
           <FastField
             as={TF}
-            className={classes.field}
             label={intl.formatMessage(messages['booking_recipient'])}
             name="recipient"
             onFocus={focus}

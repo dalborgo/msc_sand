@@ -1,6 +1,14 @@
 import { defineMessages } from 'react-intl'
 
 export const messages = defineMessages({
+  booking_more_goods_details: {
+    id: 'booking.more_goods_details',
+    defaultMessage: 'More goods details',
+  },
+  booking_type_goods: {
+    id: 'booking.type_goods',
+    defaultMessage: 'Type of goods',
+  },
   booking_sender: {
     id: 'booking.sender',
     defaultMessage: 'Sender',

@@ -8,33 +8,27 @@ import { messages } from 'src/translations/messages'
 import { Switch } from 'formik-material-ui'
 import ToggleButton from '@material-ui/lab/ToggleButton'
 import MandatoryToggleButtonGroup from 'src/utils/formik/MandatoryToggleButtonGroup'
+import { typeOfGoods } from 'src/utils/lists'
 
 const useStyles = makeStyles(theme => ({
-  field: {
-    margin: theme.spacing(1),
+  backgroundTextArea: {
     backgroundColor: theme.palette.grey[100],
-  },
-  inputLabel: {
-    paddingLeft: theme.spacing(2),
   },
   toggleButtonGroup: {
     marginLeft: theme.spacing(1.5),
   },
 }))
 
-
 const ContainerDataFields = ({ handleChange }) => {
   const classes = useStyles()
   const intl = useIntl()
   console.log('%cRENDER_FORM', 'color: orange')
-  
   return (
     <>
       <Grid alignItems="center" container>
         <Grid item>
           <FastField
             as={TF}
-            className={classes.field}
             InputProps={
               {
                 inputComponent: NumberFormatComp,
@@ -53,7 +47,6 @@ const ContainerDataFields = ({ handleChange }) => {
         <Grid item>
           <FastField
             as={TF}
-            className={classes.field}
             InputProps={
               {
                 inputComponent: NumberFormatComp,
@@ -72,7 +65,6 @@ const ContainerDataFields = ({ handleChange }) => {
         <Grid item>
           <FastField
             as={TF}
-            className={classes.field}
             InputProps={
               {
                 inputComponent: NumberFormatComp,
@@ -90,7 +82,6 @@ const ContainerDataFields = ({ handleChange }) => {
         </Grid>
         <Grid item>
           <InputLabel
-            className={classes.inputLabel}
             htmlFor="currencyGoods"
           >
             {intl.formatMessage(messages['booking_currency_goods'])}
@@ -115,7 +106,6 @@ const ContainerDataFields = ({ handleChange }) => {
       <Grid alignItems="center" container>
         <Grid item>
           <InputLabel
-            className={classes.inputLabel}
             htmlFor="reeferContainer"
           >
             {intl.formatMessage(messages['booking_reefer_container'])}
@@ -126,17 +116,16 @@ const ContainerDataFields = ({ handleChange }) => {
             />
           </InputLabel>
         </Grid>
-        {/*   <Grid item>
+        <Grid item>
           <FastField
             as={TF}
-            className={classes.field}
             InputLabelProps={
               {
                 shrink: true,
               }
             }
-            label={intl.formatMessage(messages['booking_currency_goods'])}
-            name="currencyGoods"
+            label={intl.formatMessage(messages['booking_type_goods'])}
+            name="typeGoods"
             onChange={
               event => {
                 handleChange(event)
@@ -144,21 +133,36 @@ const ContainerDataFields = ({ handleChange }) => {
             }
             select
             SelectProps={{ native: true }}
-            style={{ width: 150 }}
-            variant="outlined"
+            style={{ width: 250 }}
           >
-            <option
-              value="EUR"
-            >
-              EUR
-            </option>
-            <option
-              value="USD"
-            >
-              USD
-            </option>
+            {
+              typeOfGoods.map(({ value, key }) => {
+                return (
+                  <option
+                    key={key}
+                    value={key}
+                  >
+                    {value}
+                  </option>
+                )
+              })
+            }
           </FastField>
-        </Grid>*/}
+        </Grid>
+      </Grid>
+      <Grid container>
+        <Grid item>
+          <FastField
+            as={TF}
+            className={classes.backgroundTextArea}
+            label={intl.formatMessage(messages['booking_more_goods_details'])}
+            multiline
+            name="moreGoodsDetails"
+            rows={4}
+            rowsMax={8}
+            style={{ minWidth: 450 }}
+          />
+        </Grid>
       </Grid>
     </>
   )
