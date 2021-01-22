@@ -11,7 +11,7 @@ import MandatoryToggleButtonGroup from 'src/utils/formik/MandatoryToggleButtonGr
 import { typeOfGoods } from 'src/utils/lists'
 
 const useStyles = makeStyles(theme => ({
-  backgroundTextArea: {
+  textArea: {
     backgroundColor: theme.palette.grey[100],
   },
   toggleButtonGroup: {
@@ -26,9 +26,10 @@ const ContainerDataFields = ({ handleChange }) => {
   return (
     <>
       <Grid alignItems="center" container>
-        <Grid item>
+        <Grid item sm={6} xs={12}>
           <FastField
             as={TF}
+            fullWidth
             InputProps={
               {
                 inputComponent: NumberFormatComp,
@@ -41,12 +42,12 @@ const ContainerDataFields = ({ handleChange }) => {
             label={intl.formatMessage(messages['booking_number_container'])}
             name="numberContainers"
             onFocus={focus}
-            style={{ width: 230 }}
           />
         </Grid>
-        <Grid item>
+        <Grid item sm={6} xs={12}>
           <FastField
             as={TF}
+            fullWidth
             InputProps={
               {
                 inputComponent: NumberFormatComp,
@@ -59,12 +60,12 @@ const ContainerDataFields = ({ handleChange }) => {
             label={intl.formatMessage(messages['booking_weight'])}
             name="weight"
             onFocus={focus}
-            style={{ width: 180 }}
           />
         </Grid>
-        <Grid item>
+        <Grid item sm={6} xs={12}>
           <FastField
             as={TF}
+            fullWidth
             InputProps={
               {
                 inputComponent: NumberFormatComp,
@@ -77,10 +78,9 @@ const ContainerDataFields = ({ handleChange }) => {
             label={intl.formatMessage(messages['booking_value_goods'])}
             name="goodsValue"
             onFocus={focus}
-            style={{ width: 180 }}
           />
         </Grid>
-        <Grid item>
+        <Grid item sm={6} xs={12}>
           <InputLabel
             htmlFor="currencyGoods"
           >
@@ -104,21 +104,10 @@ const ContainerDataFields = ({ handleChange }) => {
         </Grid>
       </Grid>
       <Grid alignItems="center" container>
-        <Grid item>
-          <InputLabel
-            htmlFor="reeferContainer"
-          >
-            {intl.formatMessage(messages['booking_reefer_container'])}
-            <FastField
-              component={Switch}
-              name="reeferContainer"
-              type="checkbox"
-            />
-          </InputLabel>
-        </Grid>
-        <Grid item>
+        <Grid item sm={6} xs={12}>
           <FastField
             as={TF}
+            fullWidth
             InputLabelProps={
               {
                 shrink: true,
@@ -133,7 +122,6 @@ const ContainerDataFields = ({ handleChange }) => {
             }
             select
             SelectProps={{ native: true }}
-            style={{ width: 250 }}
           >
             {
               typeOfGoods.map(({ value, key }) => {
@@ -149,18 +137,30 @@ const ContainerDataFields = ({ handleChange }) => {
             }
           </FastField>
         </Grid>
+        <Grid item sm={6} xs={12}>
+          <InputLabel
+            htmlFor="reeferContainer"
+          >
+            {intl.formatMessage(messages['booking_reefer_container'])}
+            <FastField
+              component={Switch}
+              name="reeferContainer"
+              type="checkbox"
+            />
+          </InputLabel>
+        </Grid>
       </Grid>
       <Grid container>
-        <Grid item>
+        <Grid item xs={12}>
           <FastField
             as={TF}
-            className={classes.backgroundTextArea}
+            className={classes.textArea}
+            fullWidth
             label={intl.formatMessage(messages['booking_more_goods_details'])}
             multiline
             name="moreGoodsDetails"
             rows={4}
             rowsMax={8}
-            style={{ minWidth: 450 }}
           />
         </Grid>
       </Grid>

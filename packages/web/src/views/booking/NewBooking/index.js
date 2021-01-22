@@ -9,16 +9,10 @@ import { messages } from 'src/translations/messages'
 import { Form, Formik } from 'formik'
 import BookingForm from './BookingForm'
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   paper: {
     height: '100%',
     overflow: 'auto',
-  },
-  container: {
-    padding: theme.spacing(2),
-    [theme.breakpoints.down('sm')]: { //mobile
-      padding: theme.spacing(0, 2),
-    },
   },
 }))
 
@@ -29,17 +23,15 @@ const NewBooking = () => {
     <Page
       title={intl.formatMessage(messages['menu_new_booking'])}
     >
-      <div className={classes.container}>
-        <StandardHeader
-          breadcrumb={
-            <StandardBreadcrumb
-              crumbs={[{ name: intl.formatMessage(messages['menu_new_booking']) }]}
-            />
-          }
-        >
-          <FormattedMessage defaultMessage="Create a New Booking" id="booking.new_booking.header_title"/>
-        </StandardHeader>
-      </div>
+      <StandardHeader
+        breadcrumb={
+          <StandardBreadcrumb
+            crumbs={[{ name: intl.formatMessage(messages['menu_new_booking']) }]}
+          />
+        }
+      >
+        <FormattedMessage defaultMessage="Create a New Booking" id="booking.new_booking.header_title"/>
+      </StandardHeader>
       <Formik
         initialValues={
           {

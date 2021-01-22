@@ -5,6 +5,14 @@ export const messages = defineMessages({
     id: 'booking.more_goods_details',
     defaultMessage: 'More goods details',
   },
+  booking_msc_booking_ref: {
+    id: 'booking.msc_booking_ref',
+    defaultMessage: 'MSC booking ref',
+  },
+  booking_booking_date: {
+    id: 'booking.booking_date',
+    defaultMessage: 'Booking Date',
+  },
   booking_type_goods: {
     id: 'booking.type_goods',
     defaultMessage: 'Type of goods',

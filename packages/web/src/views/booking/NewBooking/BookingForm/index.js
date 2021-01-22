@@ -4,6 +4,7 @@ import { FormattedMessage } from 'react-intl'
 import ContainerDataFields from './ContainerDataFields'
 import { useFormikContext } from 'formik'
 import HeaderDataFields from './HeaderDataFields'
+import BookingDataFields from './BookingDataFields'
 
 const useStyles = makeStyles(theme => ({
   divContainer: {
@@ -20,9 +21,10 @@ const useStyles = makeStyles(theme => ({
     '& .MuiCard-root': {
       padding: theme.spacing(2),
       marginBottom: theme.spacing(2),
+      maxWidth: theme.breakpoints.values['md'],
     },
     '& .MuiGrid-item': {
-      padding: theme.spacing(1,1,2,1),
+      padding: theme.spacing(1.5, 1, 1.5, 1),
     },
   },
 }))
@@ -31,20 +33,26 @@ const BookingForm = () => {
   const classes = useStyles()
   const { handleChange } = useFormikContext()
   return (
-    <>
-      <div className={classes.divContainer} id="bookingForm">
-        <Typography color="secondary" gutterBottom>
-          <FormattedMessage defaultMessage="Sender Recipient data" id="booking.sender_recipient_data"/>
-        </Typography>
+    <div className={classes.divContainer} id="bookingForm">
+      <Typography color="secondary" gutterBottom>
+        <FormattedMessage defaultMessage="Sender and Recipient data" id="booking.sender_recipient_data"/>
+      </Typography>
+      <Card>
         <HeaderDataFields/>
-        <Typography color="secondary" gutterBottom>
-          <FormattedMessage defaultMessage="Container data" id="booking.container_data"/>
-        </Typography>
-        <Card id="mio">
-          <ContainerDataFields handleChange={handleChange}/>
-        </Card>
-      </div>
-    </>
+      </Card>
+      <Typography color="secondary" gutterBottom>
+        <FormattedMessage defaultMessage="Container data" id="booking.container_data"/>
+      </Typography>
+      <Card>
+        <ContainerDataFields handleChange={handleChange}/>
+      </Card>
+      <Typography color="secondary" gutterBottom>
+        <FormattedMessage defaultMessage="Booking data" id="booking.booking_data"/>
+      </Typography>
+      <Card>
+        <BookingDataFields/>
+      </Card>
+    </div>
   )
 }
 

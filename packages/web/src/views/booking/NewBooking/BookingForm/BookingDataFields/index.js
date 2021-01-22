@@ -5,16 +5,26 @@ import { focus } from 'src/utils/formik'
 import { useIntl } from 'react-intl'
 import { messages } from 'src/translations/messages'
 
-const HeaderDataFields = () => {
+/*const useStyles = makeStyles(theme => ({
+  backgroundTextArea: {
+    backgroundColor: theme.palette.grey[100],
+  },
+  toggleButtonGroup: {
+    marginLeft: theme.spacing(1.5),
+  },
+}))*/
+
+const BookingDataFields = () => {
   const intl = useIntl()
+  console.log('%cRENDER_FORM_BOOKING', 'color: orange')
   return (
     <Grid alignItems="center" container>
       <Grid item sm={6} xs={12}>
         <FastField
           as={TF}
           fullWidth
-          label={intl.formatMessage(messages['booking_sender'])}
-          name="sender"
+          label={intl.formatMessage(messages['booking_msc_booking_ref'])}
+          name="bookingRef"
           onFocus={focus}
         />
       </Grid>
@@ -22,7 +32,7 @@ const HeaderDataFields = () => {
         <FastField
           as={TF}
           fullWidth
-          label={intl.formatMessage(messages['booking_recipient'])}
+          label={intl.formatMessage(messages['booking_booking_date'])}
           name="recipient"
           onFocus={focus}
         />
@@ -31,4 +41,4 @@ const HeaderDataFields = () => {
   )
 }
 
-export default memo(HeaderDataFields)
+export default memo(BookingDataFields)

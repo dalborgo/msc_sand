@@ -13,11 +13,10 @@ const useStyles = makeStyles((theme) => ({
   innerFirst: {
     display: 'flex',
     flexDirection: 'column',
-    padding: theme.spacing(2),
-    paddingTop: theme.spacing(1),
+    padding: theme.spacing(1, 3),
     width: '100%',
     [theme.breakpoints.down('xs')]: {
-      padding: 0,
+      padding: theme.spacing(0, 2),
     },
   },
 }))
