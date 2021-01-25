@@ -8,6 +8,10 @@ import BookingDataFields from './BookingDataFields'
 
 const useStyles = makeStyles(theme => ({
   divContainer: {
+    paddingRight: theme.spacing(3),
+    [theme.breakpoints.down('sm')]: { //mobile
+      paddingRight: theme.spacing(0),
+    },
     '& .MuiInputLabel-root': {
       marginTop: 2,
       fontSize: '0.9rem',
@@ -21,7 +25,6 @@ const useStyles = makeStyles(theme => ({
     '& .MuiCard-root': {
       padding: theme.spacing(2),
       marginBottom: theme.spacing(2),
-      maxWidth: theme.breakpoints.values['md'],
     },
     '& .MuiGrid-item': {
       padding: theme.spacing(1.5, 1, 1.5, 1),
@@ -50,7 +53,7 @@ const BookingForm = () => {
         <FormattedMessage defaultMessage="Booking data" id="booking.booking_data"/>
       </Typography>
       <Card>
-        <BookingDataFields/>
+        <BookingDataFields handleChange={handleChange}/>
       </Card>
     </div>
   )

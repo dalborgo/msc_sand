@@ -2,13 +2,12 @@ import React, { memo } from 'react'
 import { FastField } from 'formik'
 import { Grid, InputLabel, makeStyles, TextField as TF } from '@material-ui/core'
 import NumberFormatComp from 'src/components/NumberFormatComp'
-import { focus } from 'src/utils/formik'
 import { useIntl } from 'react-intl'
 import { messages } from 'src/translations/messages'
 import { Switch } from 'formik-material-ui'
 import ToggleButton from '@material-ui/lab/ToggleButton'
 import MandatoryToggleButtonGroup from 'src/utils/formik/MandatoryToggleButtonGroup'
-import { typeOfGoods } from 'src/utils/lists'
+import useNewBookingStore from 'src/zustandStore/useNewBookingStore'
 
 const useStyles = makeStyles(theme => ({
   textArea: {
@@ -18,7 +17,7 @@ const useStyles = makeStyles(theme => ({
     marginLeft: theme.spacing(1.5),
   },
 }))
-
+const { typesOfGoods } = useNewBookingStore.getState()
 const ContainerDataFields = ({ handleChange }) => {
   const classes = useStyles()
   const intl = useIntl()
@@ -111,18 +110,23 @@ const ContainerDataFields = ({ handleChange }) => {
               }
             }
             label={intl.formatMessage(messages['booking_type_goods'])}
-            name="typeGoods"
+            name="typeOfGoods"
             onChange={
               event => {
                 handleChange(event)
               }
             }
             onFocus={() => null}
+            required
             select
             SelectProps={{ native: true }}
           >
+            <option
+              key={''}
+              value={''}
+            />
             {
-              typeOfGoods.map(({ value, key }) => {
+              typesOfGoods.map(({ value, key }) => {
                 return (
                   <option
                     key={key}

@@ -1,7 +1,6 @@
 import React, { memo } from 'react'
 import { FastField } from 'formik'
 import { Grid, TextField as TF } from '@material-ui/core'
-import { focus } from 'src/utils/formik'
 import { useIntl } from 'react-intl'
 import { messages } from 'src/translations/messages'
 

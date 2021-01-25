@@ -17,6 +17,18 @@ export const messages = defineMessages({
     id: 'booking.type_goods',
     defaultMessage: 'Type of goods',
   },
+  booking_city_collation_point: {
+    id: 'booking.city_collation_point',
+    defaultMessage: 'City of the collection point',
+  },
+  booking_insurance_type: {
+    id: 'booking.insurance_type',
+    defaultMessage: 'Insurance type',
+  },
+  booking_vessel_name: {
+    id: 'booking.vessel_name',
+    defaultMessage: 'Vessel name (if already known)',
+  },
   booking_sender: {
     id: 'booking.sender',
     defaultMessage: 'Sender',
