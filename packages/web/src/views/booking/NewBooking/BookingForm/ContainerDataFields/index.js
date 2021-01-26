@@ -10,9 +10,6 @@ import MandatoryToggleButtonGroup from 'src/utils/formik/MandatoryToggleButtonGr
 import useNewBookingStore from 'src/zustandStore/useNewBookingStore'
 
 const useStyles = makeStyles(theme => ({
-  textArea: {
-    backgroundColor: theme.palette.grey[100],
-  },
   toggleButtonGroup: {
     marginLeft: theme.spacing(1.5),
   },
@@ -104,11 +101,6 @@ const ContainerDataFields = ({ handleChange }) => {
           <FastField
             as={TF}
             fullWidth
-            InputLabelProps={
-              {
-                shrink: true,
-              }
-            }
             label={intl.formatMessage(messages['booking_type_goods'])}
             name="typeOfGoods"
             onChange={
@@ -142,11 +134,23 @@ const ContainerDataFields = ({ handleChange }) => {
         <Grid item sm={6} xs={12}>
           <InputLabel
             htmlFor="reeferContainer"
+            style={{height: 20}}
           >
             {intl.formatMessage(messages['booking_reefer_container'])}
             <FastField
               component={Switch}
               name="reeferContainer"
+              type="checkbox"
+            />
+          </InputLabel>
+          <InputLabel
+            htmlFor="acceptedByMSC"
+            style={{whiteSpace: 'nowrap'}}
+          >
+            {intl.formatMessage(messages['accepted_by_msc'])}
+            <FastField
+              component={Switch}
+              name="acceptedByMSC"
               type="checkbox"
             />
           </InputLabel>
@@ -156,7 +160,6 @@ const ContainerDataFields = ({ handleChange }) => {
         <Grid item xs={12}>
           <FastField
             as={TF}
-            className={classes.textArea}
             fullWidth
             label={intl.formatMessage(messages['booking_more_goods_details'])}
             multiline

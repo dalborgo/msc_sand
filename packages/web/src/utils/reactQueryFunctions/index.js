@@ -54,11 +54,11 @@ export function useSnackQueryError () {
         enqueueSnackbar(intl.formatMessage(messages['network_error']), { variant: 'default', ...options })
       } else if (responseData) {
         const { values, code: errCode } = responseData.err || {}
-        const message = messages[responseData.code || errCode]
-        enqueueSnackbar(message ? intl.formatMessage(message, values) : responseData.message, {...options})
+        const message = messages[responseData.code || `cause_${responseData.cause}` || errCode]
+        enqueueSnackbar(message ? intl.formatMessage(message, values) : responseData.message, { ...options })
       } else {
         log.debug('error code:', err.code)
-        enqueueSnackbar(messages[err.code] ? intl.formatMessage(messages[err.code]) : message, {...options})
+        enqueueSnackbar(messages[err.code] ? intl.formatMessage(messages[err.code]) : message, { ...options })
       }
     }
   })

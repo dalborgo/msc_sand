@@ -1,11 +1,11 @@
-import React, { memo } from 'react'
+import React, { memo, useCallback } from 'react'
 import { FastField } from 'formik'
 import { Grid, TextField as TF } from '@material-ui/core'
 import { useIntl } from 'react-intl'
 import { messages } from 'src/translations/messages'
 import useNewBookingStore from 'src/zustandStore/useNewBookingStore'
 import shallow from 'zustand/shallow'
-
+import BookingAutocomplete from './BookingAutocomplete'
 /*const useStyles = makeStyles(theme => ({
   backgroundTextArea: {
     backgroundColor: theme.palette.grey[100],
@@ -14,19 +14,41 @@ import shallow from 'zustand/shallow'
     marginLeft: theme.spacing(1.5),
   },
 }))*/
-
-const { insuranceTypes } = useNewBookingStore.getState()
+const { countryList, insuranceTypes } = useNewBookingStore.getState()
 const newBookingSelector = state => ({
   insuranceSelected: state.insuranceSelected,
   setInsuranceSelected: state.setInsuranceSelected,
+  setLoadingPorts: state.setLoadingPorts,
+  setDischargePorts: state.setDischargePorts,
+  loadingPorts: state.loadingPorts,
+  dischargePorts: state.dischargePorts,
 })
-const BookingDataFields = ({ handleChange }) => {
+const BookingDataFields = ({ handleChange, setFieldValue }) => {
   console.log('%cRENDER_FORM_BOOKING', 'color: orange')
   const intl = useIntl()
   const {
     insuranceSelected,
     setInsuranceSelected,
+    setDischargePorts,
+    loadingPorts,
+    dischargePorts,
+    setLoadingPorts,
   } = useNewBookingStore(newBookingSelector, shallow)
+  const onCountryCollectionPointChange = useCallback((_, value) => {setFieldValue('countryCollectionPoint', value)}, [setFieldValue])
+  const onCountryDeliveryPointChange = useCallback((_, value) => {setFieldValue('countryDeliveryPoint', value)}, [setFieldValue])
+  const onPortLoadingChange = useCallback((_, value) => {setFieldValue('portLoading', value)}, [setFieldValue])
+  const onPortDischargeChange = useCallback((_, value) => {setFieldValue('portDischarge', value)}, [setFieldValue])
+  const onCountryPortLoadingChange = useCallback((_, value) => {
+    setFieldValue('countryPortLoading', value)
+    setFieldValue('portLoading', null)
+    setLoadingPorts(value)
+  }, [setFieldValue, setLoadingPorts])
+  const onCountryPortDischargeChange = useCallback((_, value) => {
+    setFieldValue('countryPortDischarge', value)
+    setFieldValue('portDischarge', null)
+    setDischargePorts(value)
+  }, [setFieldValue, setDischargePorts])
+  
   return (
     <Grid alignItems="center" container>
       <Grid item sm={6} xs={12}>
@@ -49,17 +71,20 @@ const BookingDataFields = ({ handleChange }) => {
         <FastField
           as={TF}
           fullWidth
-          InputLabelProps={
-            {
-              shrink: true,
-            }
-          }
           label={intl.formatMessage(messages['booking_insurance_type'])}
           name="insuranceType"
           onChange={
             event => {
               handleChange(event)
               setInsuranceSelected(event?.target?.value)
+              setFieldValue('cityDeliveryPoint', '')
+              setFieldValue('cityCollectionPoint', '')
+              setFieldValue('countryCollectionPoint', null)
+              setFieldValue('countryDeliveryPoint', null)
+              setFieldValue('countryPortDischarge', null)
+              setFieldValue('countryPortLoading', null)
+              setFieldValue('portDischarge', null)
+              setFieldValue('portLoading', null)
             }
           }
           onFocus={() => null}
@@ -95,12 +120,88 @@ const BookingDataFields = ({ handleChange }) => {
       {
         insuranceSelected.startsWith('door') &&
         <Grid item sm={6} xs={12}>
+          <BookingAutocomplete
+            label={intl.formatMessage(messages['booking_country_collection_point'])}
+            list={countryList}
+            name="countryCollectionPoint"
+            onChange={onCountryCollectionPointChange}
+          />
+        </Grid>
+      }
+      {
+        insuranceSelected.startsWith('door') &&
+        <Grid item sm={6} xs={12}>
           <FastField
             as={TF}
             fullWidth
-            label={intl.formatMessage(messages['booking_city_collation_point'])}
-            name="cityCollationPoint"
-            required
+            label={intl.formatMessage(messages['booking_city_collection_point'])}
+            name="cityCollectionPoint"
+          />
+        </Grid>
+      }
+      {
+        insuranceSelected.startsWith('port') &&
+        <Grid item sm={6} xs={12}>
+          <BookingAutocomplete
+            label={intl.formatMessage(messages['booking_country_delivery_point'])}
+            list={countryList}
+            name="countryDeliveryPoint"
+            onChange={onCountryDeliveryPointChange}
+          />
+        </Grid>
+      }
+      {
+        insuranceSelected.startsWith('port') &&
+        <Grid item sm={6} xs={12}>
+          <FastField
+            as={TF}
+            fullWidth
+            label={intl.formatMessage(messages['booking_city_delivery_point'])}
+            name="cityDeliveryPoint"
+          />
+        </Grid>
+      }
+      {
+        insuranceSelected.startsWith('door') &&
+        <Grid item sm={6} xs={12}>
+          <BookingAutocomplete
+            label={intl.formatMessage(messages['booking_country_port_loading'])}
+            list={countryList}
+            name="countryPortLoading"
+            onChange={onCountryPortLoadingChange}
+          />
+        </Grid>
+      }
+      {
+        insuranceSelected.startsWith('door') &&
+        <Grid item sm={6} xs={12}>
+          <BookingAutocomplete
+            label={intl.formatMessage(messages['booking_port_loading'])}
+            list={loadingPorts}
+            name="portLoading"
+            onChange={onPortLoadingChange}
+          />
+        </Grid>
+      }
+      {
+        insuranceSelected.startsWith('port') &&
+        <Grid item sm={6} xs={12}>
+          <BookingAutocomplete
+            label={intl.formatMessage(messages['booking_country_port_discharge'])}
+            list={countryList}
+            name="countryPortDischarge"
+            onChange={onCountryPortDischargeChange}
+          />
+        </Grid>
+      }
+      {
+        insuranceSelected.startsWith('port') &&
+        <Grid item sm={6} xs={12}>
+          <BookingAutocomplete
+            label={intl.formatMessage(messages['booking_port_discharge'])}
+            list={dischargePorts}
+            name="portDischarge"
+            onChange={onPortDischargeChange}
           />
         </Grid>
       }

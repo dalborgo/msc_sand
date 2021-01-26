@@ -100,7 +100,7 @@ app.use((err, req, res, next) => {
   }
   res.status(interceptedResponseStatus || err.status || 500)
   const couchErrorCode = get(err, 'cause.code')
-  res.send({ ok: false, message: err.message, err, errorCode: couchErrorCode || err.code })
+  res.send({ ok: false, message: err.message, err, cause: couchErrorCode || err.code })
 })
 
 app.use(function (req, res) {

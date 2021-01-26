@@ -33,7 +33,7 @@ const Page = forwardRef(({
       <Helmet>
         <title>{`${prefix ? `${prefix} - ` : ''}`}{title}</title>
       </Helmet>
-      {loading ? <LinearProgress/> : <div style={{ height: 4 }}/>}
+      {loading ? <LinearProgress color="secondary" style={{height: 6}}/> : <div style={{ height: 6 }}/>}
       {children}
     </div>
   )

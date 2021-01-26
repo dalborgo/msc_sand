@@ -1,7 +1,6 @@
 import jwt from 'jsonwebtoken'
 import { couchQueries } from '@adapter/io'
 import config from 'config'
-import get from 'lodash/get'
 import log from '@adapter/common/src/winston'
 
 const { MAXAGE_MINUTES = 30, AUTH = 'boobs' } = config.get('express')
@@ -28,18 +27,10 @@ function getQueryUserField () {
   return '`user`.`user`, `user`.`role`, `user`.`locales` '
 }
 
-async function getInitialData (connClass) {
-  const collection = connClass.projectBucketCollection
-  const { content } = await collection.get('general_configuration')
-  return {
-    companyName: get(content, 'company_data.name'),
-  }
-}
-
 function addRouters (router) {
   router.post('/jwt/login', async function (req, res) {
     const { connClass, route: { path } } = req
-    const { username, password, code } = req.body
+    const { username, password } = req.body
     const query = 'SELECT '
                   + getQueryUserField()+', meta(`user`).id _id '
                   + 'FROM `' + connClass.projectBucketName + '` `user` '

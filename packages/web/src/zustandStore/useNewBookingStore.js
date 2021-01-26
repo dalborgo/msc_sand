@@ -1,6 +1,6 @@
 import create from 'zustand'
 import immerMiddleware from './immerMiddleware'
-import { getTypeOfGoods } from '@adapter/common/src/msc'
+import { getCountryList, getTypeOfGoods, getPortList } from '@adapter/common/src/msc'
 
 const insuranceTypes = [
   'door-to-door',
@@ -10,9 +10,14 @@ const insuranceTypes = [
 ]
 
 const initialState = {
-  typesOfGoods: getTypeOfGoods(),
-  insuranceTypes,
   insuranceSelected: '',
+  countryLoadingSelected: null,
+  countryDischargeSelected: null,
+  loadingPorts: [],
+  dischargePorts: [],
+  insuranceTypes,
+  countryList: getCountryList(),
+  typesOfGoods: getTypeOfGoods(),
 }
 
 const useNewBookingStore = create(immerMiddleware(set => ({
@@ -20,6 +25,12 @@ const useNewBookingStore = create(immerMiddleware(set => ({
   reset: () => set(() => initialState),
   setInsuranceSelected: val => set(state => {
     state.insuranceSelected = val
+  }),
+  setLoadingPorts: ({value: country}) => set(state => {
+    state.loadingPorts = getPortList(country)
+  }),
+  setDischargePorts: ({value: country}) => set(state => {
+    state.dischargePorts = getPortList(country)
   }),
 })))
 

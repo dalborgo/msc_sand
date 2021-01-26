@@ -5,6 +5,7 @@ import ContainerDataFields from './ContainerDataFields'
 import { useFormikContext } from 'formik'
 import HeaderDataFields from './HeaderDataFields'
 import BookingDataFields from './BookingDataFields'
+import InsuranceDataFields from './InsuranceDataFields'
 
 const useStyles = makeStyles(theme => ({
   divContainer: {
@@ -16,7 +17,7 @@ const useStyles = makeStyles(theme => ({
       marginTop: 2,
       fontSize: '0.9rem',
     },
-    '& .MuiInputBase-input': {
+    '& .MuiOutlinedInput-multiline, .MuiOutlinedInput-adornedEnd, .MuiAutocomplete-root, .MuiInputBase-input ': {
       backgroundColor: theme.palette.grey[100],
     },
     '& .MuiSwitch-root': {
@@ -34,7 +35,7 @@ const useStyles = makeStyles(theme => ({
 
 const BookingForm = () => {
   const classes = useStyles()
-  const { handleChange } = useFormikContext()
+  const { handleChange, setFieldValue } = useFormikContext()
   return (
     <div className={classes.divContainer} id="bookingForm">
       <Typography color="secondary" gutterBottom>
@@ -53,7 +54,13 @@ const BookingForm = () => {
         <FormattedMessage defaultMessage="Booking data" id="booking.booking_data"/>
       </Typography>
       <Card>
-        <BookingDataFields handleChange={handleChange}/>
+        <BookingDataFields handleChange={handleChange} setFieldValue={setFieldValue}/>
+      </Card>
+      <Typography color="secondary" gutterBottom>
+        <FormattedMessage defaultMessage="Insurance data" id="booking.insurance_data"/>
+      </Typography>
+      <Card>
+        <InsuranceDataFields/>
       </Card>
     </div>
   )

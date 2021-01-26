@@ -1,9 +1,57 @@
 import { defineMessages } from 'react-intl'
 
 export const messages = defineMessages({
+  common_no_options: {
+    id: 'common.no_options',
+    defaultMessage: 'No options',
+  },
   booking_more_goods_details: {
     id: 'booking.more_goods_details',
     defaultMessage: 'More goods details',
+  },
+  booking_save_certificate_ok: {
+    id: 'booking.booking_save_certificate_ok',
+    defaultMessage: 'Certificate "{id}" saved successfully!',
+  },
+  booking_country_collection_point: {
+    id: 'booking.country_collection_point',
+    defaultMessage: 'Country of the collection point',
+  },
+  booking_country_delivery_point: {
+    id: 'booking.country_delivery_point',
+    defaultMessage: 'Country of the delivery point',
+  },
+  booking_city_collection_point: {
+    id: 'booking.city_collection_point',
+    defaultMessage: 'City of the collection point',
+  },
+  booking_city_delivery_point: {
+    id: 'booking.city_delivery_point',
+    defaultMessage: 'City of the delivery point',
+  },
+  booking_country_port_loading: {
+    id: 'booking.country_port_loading',
+    defaultMessage: 'Country of the port loading',
+  },
+  booking_country_port_discharge: {
+    id: 'booking.country_port_discharge',
+    defaultMessage: 'Country of the port discharge',
+  },
+  booking_important_customer: {
+    id: 'booking.important_customer',
+    defaultMessage: 'Important customer',
+  },
+  booking_special_conditions: {
+    id: 'booking.special_conditions',
+    defaultMessage: 'Special conditions',
+  },
+  booking_port_loading: {
+    id: 'booking.port_loading',
+    defaultMessage: 'Port of loading',
+  },
+  booking_port_discharge: {
+    id: 'booking.port_discharge',
+    defaultMessage: 'Port of discharge',
   },
   booking_msc_booking_ref: {
     id: 'booking.msc_booking_ref',
@@ -16,10 +64,6 @@ export const messages = defineMessages({
   booking_type_goods: {
     id: 'booking.type_goods',
     defaultMessage: 'Type of goods',
-  },
-  booking_city_collation_point: {
-    id: 'booking.city_collation_point',
-    defaultMessage: 'City of the collection point',
   },
   booking_insurance_type: {
     id: 'booking.insurance_type',
@@ -60,6 +104,10 @@ export const messages = defineMessages({
   accepted_by_msc: {
     id: 'booking.accepted_by_msc',
     defaultMessage: 'I declare to ship goods accepted by MSC',
+  },
+  common_rate: {
+    id: 'common.rate',
+    defaultMessage: 'Tasso',
   },
   common_tot: {
     id: 'common.tot',
@@ -139,7 +187,11 @@ export const messages = defineMessages({
   },
   role_admin: {
     id: 'role.role_admin',
-    defaultMessage: 'Admninistrator',
+    defaultMessage: 'Administrator',
+  },
+  role_broker: {
+    id: 'role.role_broker',
+    defaultMessage: 'Broker',
   },
   sub_reports: {
     id: 'sub.reports',
