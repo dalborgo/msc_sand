@@ -64,7 +64,7 @@ const BookingDataFields = ({ handleChange, setFieldValue }) => {
           as={TF}
           fullWidth
           label={intl.formatMessage(messages['booking_booking_date'])}
-          name="recipient"
+          name="bookingDate"
         />
       </Grid>
       <Grid item sm={6} xs={12}>

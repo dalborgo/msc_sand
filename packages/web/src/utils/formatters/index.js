@@ -91,7 +91,7 @@ export function useRoleFormatter () {
         case 4:
           return intl.formatMessage(messages['role_admin'])
         default:
-          return intl.formatMessage(messages['role_customer'])
+          return intl.formatMessage(messages['role_broker'])
       }
     }
   })

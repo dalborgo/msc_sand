@@ -80,11 +80,22 @@ const resetAll = obj => {
   })
 }
 
+function filterByArray (obj, arr) {
+  const newObj = {}
+  for (let key in obj) {
+    if (arr.includes(key)) {
+      newObj[key] = obj[key]
+    }
+  }
+  return newObj
+}
+
 const objectUpperCase = obj => mapValues(obj, inp => !isNil(inp) ? String(inp).toUpperCase() : undefined)
 const objectRemoveEmpty = obj => mapValues(obj, inp => inp !== '' && inp !== null ? inp : undefined)
 
 export default {
   escapeUnknownChar,
+  filterByArray,
   objectRemoveEmpty,
   objectUpperCase,
   resetAll,

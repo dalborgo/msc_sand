@@ -8,13 +8,13 @@ import StandardHeader from 'src/components/StandardHeader'
 import { messages } from 'src/translations/messages'
 import { Form, Formik } from 'formik'
 import BookingForm from './BookingForm'
-import PerfectScrollbar from 'react-perfect-scrollbar'
 import { checkValues } from './validate'
 import { axiosLocalInstance, useSnackQueryError } from 'src/utils/reactQueryFunctions'
-import { useMutation } from 'react-query'
+import { useMutation, useQueryClient } from 'react-query'
 import { useGeneralStore } from 'src/zustandStore'
 import shallow from 'zustand/shallow'
 import { useSnackbar } from 'notistack'
+import useAuth from 'src/hooks/useAuth'
 
 const useStyles = makeStyles(theme => ({
   page: {
@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const saveCertificateMutation = async values => {
-  const { data } = await axiosLocalInstance.post('certificate/save', {
+  const { data } = await axiosLocalInstance.post('certificates/save', {
     ...values,
   })
   return data
@@ -39,7 +39,9 @@ const NewBooking = () => {
   const { enqueueSnackbar } = useSnackbar()
   const classes = useStyles()
   const intl = useIntl()
+  const queryClient = useQueryClient()
   const submitRef = useRef()
+  const { user } = useAuth()
   const { setLoading } = useGeneralStore(loadingSel, shallow)
   const { mutateAsync: saveCertificate } = useMutation(saveCertificateMutation, {
     onMutate: () => {
@@ -50,7 +52,13 @@ const NewBooking = () => {
       if (!ok || error) {
         snackQueryError(err || message || error)
       } else {
-        enqueueSnackbar(intl.formatMessage(messages['booking_save_certificate_ok'], { id: data?.results?.id }), { variant: 'success' })
+        const listQueryKey = 'certificates/list'
+        console.log('data.results:', data.results)
+        if (!queryClient.getQueryState(listQueryKey)) {
+          //queryClient.setQueryData(listQueryKey, old => [...old, data.results])
+          console.log('TROVATA')
+        }
+        enqueueSnackbar(intl.formatMessage(messages['booking_save_certificate_ok'], { code: data.results?.code }), { variant: 'success' })
       }
       setLoading(false)
     },
@@ -63,6 +71,7 @@ const NewBooking = () => {
         initialValues={
           {
             acceptedByMSC: false,
+            bookingDate: null,
             cityCollectionPoint: '',
             cityDeliveryPoint: '',
             countryCollectionPoint: null,
@@ -82,7 +91,7 @@ const NewBooking = () => {
             rate: '',
             sender: 'MSC for whom it may concern',
             specialConditions: '',
-            typeOfGoods: '42',
+            typeOfGoods: '',
             vesselName: '',
             weight: '',
           }
@@ -90,7 +99,7 @@ const NewBooking = () => {
         onSubmit={
           async (values, { resetForm }) => {
             const newValues = checkValues(values)
-            const { ok } = await saveCertificate(newValues)
+            const { ok } = await saveCertificate({ ...newValues, _createdBy: user.display })
             ok && resetForm()
             return true
           }
@@ -101,7 +110,7 @@ const NewBooking = () => {
             <StandardHeader
               breadcrumb={
                 <StandardBreadcrumb
-                  crumbs={[{ name: intl.formatMessage(messages['menu_new_booking']) }]}
+                  crumbs={[{ name: intl.formatMessage(messages['sub_certificates']) }, { to: '/app/certificates/list', name: intl.formatMessage(messages['menu_retrieve_certificate']) }]}
                 />
               }
               rightComponent={
@@ -116,12 +125,16 @@ const NewBooking = () => {
               <FormattedMessage defaultMessage="Create a New Booking" id="booking.new_booking.header_title"/>
             </StandardHeader>
           </div>
-          <DivContentWrapper>
+          <DivContentWrapper
+            contentProps={
+              {
+                overflowY: 'auto',
+              }
+            }
+          >
             <Form style={{ height: '100%' }}>
               <div className={classes.paper}>
-                <PerfectScrollbar>
-                  <BookingForm/>
-                </PerfectScrollbar>
+                <BookingForm/>
                 <Button ref={submitRef} style={{ display: 'none' }} type="submit"/>
               </div>
             </Form>

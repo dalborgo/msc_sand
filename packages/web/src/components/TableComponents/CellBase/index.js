@@ -4,7 +4,7 @@ import { TableHeaderRow, Toolbar, VirtualTable } from '@devexpress/dx-react-grid
 
 const styleCell = theme => ({
   cell: {
-    padding: theme.spacing(1, 2),
+    padding: theme.spacing(0, 2, 1),
   },
 })
 const styleToolbar = theme => ({
@@ -24,16 +24,16 @@ export const SummaryCellBase = props => {
 export const CellSummary = withStyles(styleCell, { withTheme: true })(
   SummaryCellBase
 )
-//c'era un warning sul campo children mancante
-export const CellHeader = withStyles(styleCell, { withTheme: true })(
-  ({ theme, children, ...rest }) => (
-    <TableHeaderRow.Cell
-      {...rest}
-      children={children}
-      style={{ paddingLeft: theme.spacing(2) }} //la prima cella prendeva un valore più forte
-    />
-  )
+
+const tableHeader =  ({ theme, children, ...rest }) => (
+  <TableHeaderRow.Cell
+    {...rest}
+    children={children}
+    style={{ paddingLeft: theme.spacing(2) }} //la prima cella prendeva un valore più forte
+  />
 )
+//c'era un warning sul campo children mancante
+export const CellHeader = withStyles(styleCell, { withTheme: true })(tableHeader)
 
 export const RootToolbar = withStyles(styleToolbar)(
   (props) => (

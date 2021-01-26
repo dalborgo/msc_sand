@@ -11,7 +11,7 @@ export const messages = defineMessages({
   },
   booking_save_certificate_ok: {
     id: 'booking.booking_save_certificate_ok',
-    defaultMessage: 'Certificate "{id}" saved successfully!',
+    defaultMessage: 'Certificate "{code}" saved successfully!',
   },
   booking_country_collection_point: {
     id: 'booking.country_collection_point',
@@ -20,6 +20,10 @@ export const messages = defineMessages({
   booking_country_delivery_point: {
     id: 'booking.country_delivery_point',
     defaultMessage: 'Country of the delivery point',
+  },
+  menu_certificate_list: {
+    id: 'menu_certificate_list',
+    defaultMessage: 'Retrieve certificate',
   },
   booking_city_collection_point: {
     id: 'booking.city_collection_point',
@@ -103,7 +107,7 @@ export const messages = defineMessages({
   },
   accepted_by_msc: {
     id: 'booking.accepted_by_msc',
-    defaultMessage: 'I declare to ship goods accepted by MSC',
+    defaultMessage: 'I declare to ship goods accepted by MSC *',
   },
   common_rate: {
     id: 'common.rate',
@@ -123,7 +127,7 @@ export const messages = defineMessages({
   },
   common_search: {
     id: 'common.search',
-    defaultMessage: 'Cerca…',
+    defaultMessage: 'Search…',
   },
   common_exportMenu: {
     id: 'common.exportMenu',
@@ -181,10 +185,6 @@ export const messages = defineMessages({
     id: 'common.room',
     defaultMessage: 'Sala',
   },
-  role_customer: {
-    id: 'role.role_customer',
-    defaultMessage: 'Cliente',
-  },
   role_admin: {
     id: 'role.role_admin',
     defaultMessage: 'Administrator',
@@ -197,9 +197,9 @@ export const messages = defineMessages({
     id: 'sub.reports',
     defaultMessage: 'Report',
   },
-  sub_booking: {
-    id: 'sub.booking',
-    defaultMessage: 'Booking',
+  sub_bookings: {
+    id: 'sub.bookings',
+    defaultMessage: 'Bookings',
   },
   sub_home: {
     id: 'sub.home',

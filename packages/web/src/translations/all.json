@@ -37,15 +37,71 @@
   },
   {
     "id": "booking.accepted_by_msc",
-    "defaultMessage": "I declare to ship goods accepted by MSC"
+    "defaultMessage": "I declare to ship goods accepted by MSC *"
+  },
+  {
+    "id": "booking.booking_data",
+    "defaultMessage": "Booking data"
+  },
+  {
+    "id": "booking.booking_date",
+    "defaultMessage": "Booking Date"
+  },
+  {
+    "id": "booking.booking_save_certificate_ok",
+    "defaultMessage": "Certificate \"{code}\" saved successfully!"
+  },
+  {
+    "id": "booking.city_collection_point",
+    "defaultMessage": "City of the collection point"
+  },
+  {
+    "id": "booking.city_delivery_point",
+    "defaultMessage": "City of the delivery point"
   },
   {
     "id": "booking.container_data",
     "defaultMessage": "Container data"
   },
   {
+    "id": "booking.country_collection_point",
+    "defaultMessage": "Country of the collection point"
+  },
+  {
+    "id": "booking.country_delivery_point",
+    "defaultMessage": "Country of the delivery point"
+  },
+  {
+    "id": "booking.country_port_discharge",
+    "defaultMessage": "Country of the port discharge"
+  },
+  {
+    "id": "booking.country_port_loading",
+    "defaultMessage": "Country of the port loading"
+  },
+  {
     "id": "booking.currency_goods",
     "defaultMessage": "Goods value currency"
+  },
+  {
+    "id": "booking.important_customer",
+    "defaultMessage": "Important customer"
+  },
+  {
+    "id": "booking.insurance_data",
+    "defaultMessage": "Insurance data"
+  },
+  {
+    "id": "booking.insurance_type",
+    "defaultMessage": "Insurance type"
+  },
+  {
+    "id": "booking.more_goods_details",
+    "defaultMessage": "More goods details"
+  },
+  {
+    "id": "booking.msc_booking_ref",
+    "defaultMessage": "MSC booking ref"
   },
   {
     "id": "booking.new_booking.header_title",
@@ -56,16 +112,52 @@
     "defaultMessage": "Number of containers booked"
   },
   {
+    "id": "booking.port_discharge",
+    "defaultMessage": "Port of discharge"
+  },
+  {
+    "id": "booking.port_loading",
+    "defaultMessage": "Port of loading"
+  },
+  {
+    "id": "booking.recipient",
+    "defaultMessage": "Recipient"
+  },
+  {
     "id": "booking.reefer_container",
     "defaultMessage": "Reefer Container"
+  },
+  {
+    "id": "booking.sender",
+    "defaultMessage": "Sender"
+  },
+  {
+    "id": "booking.sender_recipient_data",
+    "defaultMessage": "Sender and Recipient data"
+  },
+  {
+    "id": "booking.special_conditions",
+    "defaultMessage": "Special conditions"
+  },
+  {
+    "id": "booking.type_goods",
+    "defaultMessage": "Type of goods"
   },
   {
     "id": "booking.value_goods",
     "defaultMessage": "Value of the goods"
   },
   {
+    "id": "booking.vessel_name",
+    "defaultMessage": "Vessel name (if already known)"
+  },
+  {
     "id": "booking.weight",
     "defaultMessage": "Weight"
+  },
+  {
+    "id": "certificates.list.header_title",
+    "defaultMessage": "Retrieve Certificate"
   },
   {
     "id": "closing_day.discounts",
@@ -152,6 +244,10 @@
     "defaultMessage": "Loading…"
   },
   {
+    "id": "common.no_options",
+    "defaultMessage": "No options"
+  },
+  {
     "id": "common.price",
     "defaultMessage": "Prezzo"
   },
@@ -164,6 +260,10 @@
     "defaultMessage": "Qta"
   },
   {
+    "id": "common.rate",
+    "defaultMessage": "Tasso"
+  },
+  {
     "id": "common.reversals",
     "defaultMessage": "Storni"
   },
@@ -172,8 +272,12 @@
     "defaultMessage": "Sala"
   },
   {
+    "id": "common.save",
+    "defaultMessage": "Save"
+  },
+  {
     "id": "common.search",
-    "defaultMessage": "Cerca…"
+    "defaultMessage": "Search…"
   },
   {
     "id": "common.settings",
@@ -328,6 +432,10 @@
     "defaultMessage": "Tavoli in corso"
   },
   {
+    "id": "menu_certificate_list",
+    "defaultMessage": "Retrieve certificate"
+  },
+  {
     "id": "mode.5STELLE",
     "defaultMessage": "Addebito"
   },
@@ -410,7 +518,11 @@
   },
   {
     "id": "role.role_admin",
-    "defaultMessage": "Admninistrator"
+    "defaultMessage": "Administrator"
+  },
+  {
+    "id": "role.role_broker",
+    "defaultMessage": "Broker"
   },
   {
     "id": "role.role_customer",
@@ -419,6 +531,10 @@
   {
     "id": "sub.booking",
     "defaultMessage": "Booking"
+  },
+  {
+    "id": "sub.bookings",
+    "defaultMessage": "Bookings"
   },
   {
     "id": "sub.certificates",

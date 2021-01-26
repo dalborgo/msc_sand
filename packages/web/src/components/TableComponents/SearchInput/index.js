@@ -1,21 +1,32 @@
 import React from 'react'
-import { IconButton, InputAdornment } from '@material-ui/core'
+import { IconButton, InputAdornment, withStyles } from '@material-ui/core'
 import { SearchPanel } from '@devexpress/dx-react-grid-material-ui'
 import CloseIcon from '@material-ui/icons/Close'
 
-export const SearchInput = props => (
+const styles = () => ({
+  root: {
+    fontSize: '0.9rem',
+  },
+})
+
+export const SearchInput = withStyles(styles)(({ classes, ...rest }) => (
   <SearchPanel.Input
-    {...props}
+    {...rest}
+    classes={
+      {
+        root: classes.root,
+      }
+    }
     endAdornment={
       <InputAdornment position="end">
         <IconButton
-          onClick={() => props.onValueChange('')}
+          onClick={() => rest.onValueChange('')}
         >
           <CloseIcon fontSize="small"/>
         </IconButton>
       </InputAdornment>
     }
     onFocus={event => event.target.select()}
-    style={{maxWidth: 240}}
+    style={{ maxWidth: 240 }}
   />
-)
+))

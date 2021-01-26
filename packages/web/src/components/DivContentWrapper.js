@@ -1,12 +1,12 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   content: {
     flexGrow: 1,
     flexShrink: 1,
     display: 'flex',
-    overflowY: 'hidden',
+    overflowY: props => props.overflowY ? props.overflowY : 'hidden',
     overflowX: 'auto',
     height: 0, //hack si muove al caricamento
   },
@@ -20,8 +20,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }))
-const DivContentWrapper = ({ children }) => {
-  const classes = useStyles()
+const DivContentWrapper = ({ children, contentProps = {} }) => {
+  const classes = useStyles(contentProps)
   return (
     <div className={classes.content}>
       <div className={classes.innerFirst}>

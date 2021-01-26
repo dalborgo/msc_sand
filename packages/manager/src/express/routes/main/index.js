@@ -1,4 +1,4 @@
-import certificate from './certificate'
+import certificates from './certificates'
 import docs from './docs'
 import info from './info'
 import jwt from './jwt'
@@ -11,7 +11,7 @@ const express = require('express')
 const router = express.Router()
 require('express-async-errors')
 
-certificate.addRouters(router)
+certificates.addRouters(router)
 docs.addRouters(router)
 info.addRouters(router)
 jwt.addRouters(router)

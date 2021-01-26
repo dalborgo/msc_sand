@@ -10,7 +10,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.background.dark,
     height: '100%',
     display: 'flex',
-    overflow: 'hidden',
+    overflow: 'auto',
     flexDirection: 'column',
   },
 }))

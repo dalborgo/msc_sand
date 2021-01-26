@@ -151,6 +151,7 @@ const ContainerDataFields = ({ handleChange }) => {
             <FastField
               component={Switch}
               name="acceptedByMSC"
+              required
               type="checkbox"
             />
           </InputLabel>
