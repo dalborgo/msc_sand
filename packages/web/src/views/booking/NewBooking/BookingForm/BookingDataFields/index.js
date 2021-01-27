@@ -45,7 +45,7 @@ const BookingDataFields = ({ handleChange, setFieldValue }) => {
   
   return (
     <Grid alignItems="center" container>
-      <Grid item sm={6} xs={12}>
+      <Grid item sm={4} xs={12}>
         <FastField
           as={TF}
           fullWidth
@@ -53,7 +53,7 @@ const BookingDataFields = ({ handleChange, setFieldValue }) => {
           name="bookingRef"
         />
       </Grid>
-      <Grid item sm={6} xs={12}>
+      <Grid item sm={4} xs={12}>
         <Field
           allowKeyboardControl
           as={DatePicker}
@@ -73,7 +73,27 @@ const BookingDataFields = ({ handleChange, setFieldValue }) => {
           }
         />
       </Grid>
-      <Grid item sm={6} xs={12}>
+      <Grid item sm={4} xs={12}>
+        <Field
+          allowKeyboardControl
+          as={DatePicker}
+          emptyLabel="dd/mm/yyyy"
+          format="DD/MM/YYYY"
+          label={intl.formatMessage(messages['booking_departure_date'])}
+          name="departureDate"
+          onChange={
+            newValue => {
+              setFieldValue('departureDate', newValue)
+            }
+          }
+          renderInput={
+            props => {
+              return <TF {...props} fullWidth helperText={null} required/>
+            }
+          }
+        />
+      </Grid>
+      <Grid item sm={3} xs={12}>
         <FastField
           as={TF}
           fullWidth
@@ -115,12 +135,29 @@ const BookingDataFields = ({ handleChange, setFieldValue }) => {
           }
         </FastField>
       </Grid>
-      <Grid item sm={6} xs={12}>
+      <Grid item sm={3} xs={12}>
         <FastField
           as={TF}
           fullWidth
           label={intl.formatMessage(messages['booking_vessel_name'])}
           name="vesselName"
+        />
+      </Grid>
+      <Grid item sm={3} xs={12}>
+        <FastField
+          as={TF}
+          fullWidth
+          label={intl.formatMessage(messages['booking_vessel_phone'])}
+          name="vesselPhone"
+        />
+      </Grid>
+      <Grid item sm={3} xs={12}>
+        <FastField
+          as={TF}
+          fullWidth
+          label={intl.formatMessage(messages['booking_vessel_mail'])}
+          name="vesselMail"
+          type="email"
         />
       </Grid>
       {
@@ -146,7 +183,7 @@ const BookingDataFields = ({ handleChange, setFieldValue }) => {
         </Grid>
       }
       {
-        insuranceSelected.startsWith('port') &&
+        insuranceSelected.endsWith('door') &&
         <Grid item sm={6} xs={12}>
           <BookingAutocomplete
             label={intl.formatMessage(messages['booking_country_delivery_point'])}
@@ -157,7 +194,7 @@ const BookingDataFields = ({ handleChange, setFieldValue }) => {
         </Grid>
       }
       {
-        insuranceSelected.startsWith('port') &&
+        insuranceSelected.endsWith('door') &&
         <Grid item sm={6} xs={12}>
           <FastField
             as={TF}
@@ -168,7 +205,7 @@ const BookingDataFields = ({ handleChange, setFieldValue }) => {
         </Grid>
       }
       {
-        insuranceSelected.startsWith('door') &&
+        (insuranceSelected.startsWith('door') || insuranceSelected.startsWith('port')) &&
         <Grid item sm={6} xs={12}>
           <BookingAutocomplete
             label={intl.formatMessage(messages['booking_country_port_loading'])}
@@ -179,7 +216,7 @@ const BookingDataFields = ({ handleChange, setFieldValue }) => {
         </Grid>
       }
       {
-        insuranceSelected.startsWith('door') &&
+        (insuranceSelected.startsWith('door') || insuranceSelected.startsWith('port')) &&
         <Grid item sm={6} xs={12}>
           <BookingAutocomplete
             label={intl.formatMessage(messages['booking_port_loading'])}
@@ -190,7 +227,7 @@ const BookingDataFields = ({ handleChange, setFieldValue }) => {
         </Grid>
       }
       {
-        insuranceSelected.startsWith('port') &&
+        (insuranceSelected.endsWith('door') || insuranceSelected.endsWith('port')) &&
         <Grid item sm={6} xs={12}>
           <BookingAutocomplete
             label={intl.formatMessage(messages['booking_country_port_discharge'])}
@@ -201,7 +238,7 @@ const BookingDataFields = ({ handleChange, setFieldValue }) => {
         </Grid>
       }
       {
-        insuranceSelected.startsWith('port') &&
+        (insuranceSelected.endsWith('door') || insuranceSelected.endsWith('port')) &&
         <Grid item sm={6} xs={12}>
           <BookingAutocomplete
             label={intl.formatMessage(messages['booking_port_discharge'])}

@@ -8,7 +8,17 @@ const HeaderDataFields = () => {
   const intl = useIntl()
   return (
     <Grid alignItems="center" container>
-      <Grid item sm={6} xs={12}>
+      <Grid item sm={4} xs={12}>
+        <FastField
+          as={TF}
+          fullWidth
+          label={intl.formatMessage(messages['booking_policy_holders'])}
+          multiline
+          name="policyHolders"
+          rowsMax={3}
+        />
+      </Grid>
+      <Grid item sm={4} xs={12}>
         <FastField
           as={TF}
           fullWidth
@@ -16,7 +26,7 @@ const HeaderDataFields = () => {
           name="sender"
         />
       </Grid>
-      <Grid item sm={6} xs={12}>
+      <Grid item sm={4} xs={12}>
         <FastField
           as={TF}
           fullWidth

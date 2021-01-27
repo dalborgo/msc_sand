@@ -39,7 +39,7 @@ const BookingForm = () => {
   return (
     <div className={classes.divContainer} id="bookingForm">
       <Typography color="secondary" gutterBottom>
-        <FormattedMessage defaultMessage="Sender and Recipient data" id="booking.sender_recipient_data"/>
+        <FormattedMessage defaultMessage="Header data" id="booking.header_data"/>
       </Typography>
       <Card>
         <HeaderDataFields/>

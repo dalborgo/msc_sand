@@ -84,8 +84,24 @@
     "defaultMessage": "Goods value currency"
   },
   {
+    "id": "booking.departure_date",
+    "defaultMessage": "Date of departure"
+  },
+  {
     "id": "booking.error_bookingDate",
     "defaultMessage": "Invalid booking date format!"
+  },
+  {
+    "id": "booking.goods_quantity",
+    "defaultMessage": "Goods quantity"
+  },
+  {
+    "id": "booking.goods_weigh",
+    "defaultMessage": "Goods weight (Kg)"
+  },
+  {
+    "id": "booking.header_data",
+    "defaultMessage": "Header data"
   },
   {
     "id": "booking.important_customer",
@@ -114,6 +130,10 @@
   {
     "id": "booking.number_container",
     "defaultMessage": "Number of containers booked"
+  },
+  {
+    "id": "booking.policy_holders",
+    "defaultMessage": "Policy Holders"
   },
   {
     "id": "booking.port_discharge",
@@ -152,12 +172,20 @@
     "defaultMessage": "Value of the goods"
   },
   {
+    "id": "booking.vessel_mail",
+    "defaultMessage": "Vessel Mail"
+  },
+  {
     "id": "booking.vessel_name",
-    "defaultMessage": "Vessel name (if already known)"
+    "defaultMessage": "Vessel name"
+  },
+  {
+    "id": "booking.vessel_phone",
+    "defaultMessage": "Vessel Phone"
   },
   {
     "id": "booking.weight",
-    "defaultMessage": "Weight"
+    "defaultMessage": "Weight (Kg)"
   },
   {
     "id": "certificates.list.header_title",

@@ -41,7 +41,15 @@ const CertificateList = () => {
         <StandardHeader
           breadcrumb={
             <StandardBreadcrumb
-              crumbs={[{ name: intl.formatMessage(messages['sub_bookings']) }, { to: '/app/booking/new-booking', name: intl.formatMessage(messages['menu_new_booking']) }]}
+              crumbs={
+                [
+                  { name: intl.formatMessage(messages['sub_bookings']) },
+                  {
+                    to: '/app/booking/new-booking',
+                    name: intl.formatMessage(messages['menu_new_booking']),
+                  },
+                ]
+              }
             />
           }
           rightComponent={

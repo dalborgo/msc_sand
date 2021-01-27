@@ -141,5 +141,12 @@
   "certificates.list.header_title": "",
   "menu_certificate_list": "",
   "sub.bookings": "",
-  "booking.error_bookingDate": ""
+  "booking.error_bookingDate": "",
+  "booking.departure_date": "",
+  "booking.policy_holders": "",
+  "booking.goods_quantity": "",
+  "booking.goods_weigh": "",
+  "booking.header_data": "",
+  "booking.vessel_phone": "",
+  "booking.vessel_mail": ""
 }

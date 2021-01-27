@@ -9,6 +9,22 @@ export const messages = defineMessages({
     id: 'booking.more_goods_details',
     defaultMessage: 'More goods details',
   },
+  booking_policy_holders: {
+    id: 'booking.policy_holders',
+    defaultMessage: 'Policy Holders',
+  },
+  booking_departure_date: {
+    id: 'booking.departure_date',
+    defaultMessage: 'Date of departure',
+  },
+  booking_vessel_phone: {
+    id: 'booking.vessel_phone',
+    defaultMessage: 'Vessel Phone',
+  },
+  booking_vessel_mail: {
+    id: 'booking.vessel_mail',
+    defaultMessage: 'Vessel Mail',
+  },
   booking_save_certificate_ok: {
     id: 'booking.booking_save_certificate_ok',
     defaultMessage: 'Certificate "{code}" saved successfully!',
@@ -79,7 +95,7 @@ export const messages = defineMessages({
   },
   booking_vessel_name: {
     id: 'booking.vessel_name',
-    defaultMessage: 'Vessel name (if already known)',
+    defaultMessage: 'Vessel name',
   },
   booking_sender: {
     id: 'booking.sender',
@@ -93,9 +109,13 @@ export const messages = defineMessages({
     id: 'booking.number_container',
     defaultMessage: 'Number of containers booked',
   },
-  booking_weight: {
-    id: 'booking.weight',
-    defaultMessage: 'Weight',
+  booking_goods_weight: {
+    id: 'booking.goods_weigh',
+    defaultMessage: 'Goods weight (Kg)',
+  },
+  booking_goods_quantity: {
+    id: 'booking.goods_quantity',
+    defaultMessage: 'Goods quantity',
   },
   booking_value_goods: {
     id: 'booking.value_goods',

@@ -1,8 +1,8 @@
 import { numeric, validation } from '@adapter/common'
 import moment from 'moment'
 
-const numberField = ['numberContainers']
-const inMillisFields = ['weight', 'goodsValue', 'rate']
+const numberField = ['numberContainers, goodsQuantity']
+const inMillisFields = ['goodsWeight', 'goodsValue', 'rate']
 const dateFields = ['bookingDate']
 export const checkValues = values => {
   const newValues = validation.objectRemoveEmpty(values)

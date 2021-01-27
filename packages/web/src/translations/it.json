@@ -111,7 +111,7 @@
   "booking.currency_goods": "Goods value currency",
   "booking.reefer_container": "Reefer Container",
   "booking.value_goods": "Value of the goods",
-  "booking.weight": "Weight",
+  "booking.weight": "Weight (Kg)",
   "common.save": "Save",
   "booking.booking_date": "Booking Date",
   "booking.booking_save_certificate_ok": "Certificate \"{code}\" saved successfully!",
@@ -131,7 +131,7 @@
   "booking.sender": "Sender",
   "booking.special_conditions": "Special conditions",
   "booking.type_goods": "Type of goods",
-  "booking.vessel_name": "Vessel name (if already known)",
+  "booking.vessel_name": "Vessel name",
   "common.no_options": "No options",
   "common.rate": "Tasso",
   "role.role_broker": "Broker",
@@ -141,5 +141,12 @@
   "certificates.list.header_title": "Retrieve Certificate",
   "menu_certificate_list": "Retrieve certificate",
   "sub.bookings": "Bookings",
-  "booking.error_bookingDate": "Invalid booking date format!"
+  "booking.error_bookingDate": "Invalid booking date format!",
+  "booking.departure_date": "Date of departure",
+  "booking.policy_holders": "Policy Holders",
+  "booking.goods_quantity": "Goods quantity",
+  "booking.goods_weigh": "Goods weight (Kg)",
+  "booking.header_data": "Header data",
+  "booking.vessel_phone": "Vessel Phone",
+  "booking.vessel_mail": "Vessel Mail"
 }
