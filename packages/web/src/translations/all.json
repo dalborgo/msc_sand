@@ -84,6 +84,10 @@
     "defaultMessage": "Goods value currency"
   },
   {
+    "id": "booking.error_bookingDate",
+    "defaultMessage": "Invalid booking date format!"
+  },
+  {
     "id": "booking.important_customer",
     "defaultMessage": "Important customer"
   },

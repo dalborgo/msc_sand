@@ -1,7 +1,9 @@
 import { numeric, validation } from '@adapter/common'
+import moment from 'moment'
 
 const numberField = ['numberContainers']
 const inMillisFields = ['weight', 'goodsValue', 'rate']
+const dateFields = ['bookingDate']
 export const checkValues = values => {
   const newValues = validation.objectRemoveEmpty(values)
   for (let key in newValues) {
@@ -12,6 +14,10 @@ export const checkValues = values => {
       }
       if (inMillisFields.includes(key)) {
         newValues[key] = numeric.normNumb(val)
+      }
+      if (dateFields.includes(key)) {
+        if(!val.isValid()){throw Error('booking_error_bookingDate')}
+        newValues[key] = moment(val).format('YYYY-MM-DD')
       }
     }
   }

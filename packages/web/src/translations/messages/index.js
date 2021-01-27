@@ -17,6 +17,10 @@ export const messages = defineMessages({
     id: 'booking.country_collection_point',
     defaultMessage: 'Country of the collection point',
   },
+  booking_error_bookingDate: {
+    id: 'booking.error_bookingDate',
+    defaultMessage: 'Invalid booking date format!',
+  },
   booking_country_delivery_point: {
     id: 'booking.country_delivery_point',
     defaultMessage: 'Country of the delivery point',

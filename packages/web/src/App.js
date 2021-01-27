@@ -43,18 +43,19 @@ const queryClient = new QueryClient({
   },
 })
 
+moment.locale('en-gb')
+
 const RouteList = () => {
   const { user } = useAuth()
   return useMemo(() => {
     return renderRoutes(routes, user?.priority)
   }, [user])
 }
-
 const App = () => {
   const { settings } = useSettings()
   const { locale = 'it' } = settings //in futuro default lingua browser per homepage prima del login
   const { reset } = useQueryErrorResetBoundary()
-  useMemo(() => {moment.locale(locale)}, [locale])  //altrimenti prende il secondo importato
+  //useMemo(() => {moment.locale(locale)}, [locale])  //altrimenti prende il secondo importato
   const theme = createTheme({
     direction: settings.direction,
     responsiveFontSizes: settings.responsiveFontSizes,
@@ -71,7 +72,7 @@ const App = () => {
               locale={locale}
               messages={translations[locale]}
             >
-              <LocalizationProvider dateAdapter={MomentAdapter} locale={locale}>
+              <LocalizationProvider dateAdapter={MomentAdapter} locale={'en-gb'}>
                 <GlobalStyles/>
                 <ErrorBoundary FallbackComponent={Error500} onError={myErrorHandler} onReset={reset}>
                   <SnackMyProvider>

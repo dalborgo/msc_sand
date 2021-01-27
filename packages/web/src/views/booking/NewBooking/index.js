@@ -33,13 +33,14 @@ const saveCertificateMutation = async values => {
   })
   return data
 }
+
 const loadingSel = state => ({ setLoading: state.setLoading })
 const NewBooking = () => {
   const snackQueryError = useSnackQueryError()
   const { enqueueSnackbar } = useSnackbar()
   const classes = useStyles()
-  const intl = useIntl()
   const queryClient = useQueryClient()
+  const intl = useIntl()
   const submitRef = useRef()
   const { user } = useAuth()
   const { setLoading } = useGeneralStore(loadingSel, shallow)
@@ -52,11 +53,17 @@ const NewBooking = () => {
       if (!ok || error) {
         snackQueryError(err || message || error)
       } else {
-        const listQueryKey = 'certificates/list'
-        console.log('data.results:', data.results)
-        if (!queryClient.getQueryState(listQueryKey)) {
-          //queryClient.setQueryData(listQueryKey, old => [...old, data.results])
-          console.log('TROVATA')
+        const queryListKey = 'certificates/list'
+        const oldCertificateList = queryClient.getQueryData(queryListKey)
+        if (oldCertificateList) {
+          const newCertificateList = {
+            ok: oldCertificateList.ok,
+            results: [
+              data.results,
+              ...oldCertificateList.results,
+            ],
+          }
+          queryClient.setQueryData(queryListKey, newCertificateList)
         }
         enqueueSnackbar(intl.formatMessage(messages['booking_save_certificate_ok'], { code: data.results?.code }), { variant: 'success' })
       }
@@ -98,10 +105,14 @@ const NewBooking = () => {
         }
         onSubmit={
           async (values, { resetForm }) => {
-            const newValues = checkValues(values)
-            const { ok } = await saveCertificate({ ...newValues, _createdBy: user.display })
-            ok && resetForm()
-            return true
+            try {
+              const newValues = checkValues(values)
+              const { ok } = await saveCertificate({ ...newValues, _createdBy: user.display })
+              ok && resetForm()
+              return true
+            } catch ({ message }) {
+              enqueueSnackbar(messages[message] ? intl.formatMessage(messages[message]) : message)
+            }
           }
         }
       >
@@ -110,7 +121,12 @@ const NewBooking = () => {
             <StandardHeader
               breadcrumb={
                 <StandardBreadcrumb
-                  crumbs={[{ name: intl.formatMessage(messages['sub_certificates']) }, { to: '/app/certificates/list', name: intl.formatMessage(messages['menu_retrieve_certificate']) }]}
+                  crumbs={
+                    [{ name: intl.formatMessage(messages['sub_certificates']) }, {
+                      to: '/app/certificates/list',
+                      name: intl.formatMessage(messages['menu_retrieve_certificate']),
+                    }]
+                  }
                 />
               }
               rightComponent={

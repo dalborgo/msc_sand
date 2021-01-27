@@ -1,5 +1,4 @@
 export { default as useGeneralStore } from './useGeneralStore'
-export { default as useClosingDayStore } from './useClosingDayStore'
-export { default as useRunningTablesStore } from './useRunningTablesStore'
-export { default as useClosedTablesStore } from './useClosedTablesStore'
+export { default as useCertificateStore } from './useCertificateStore'
+export { default as useNewBookingStore } from './useNewBookingStore'
 

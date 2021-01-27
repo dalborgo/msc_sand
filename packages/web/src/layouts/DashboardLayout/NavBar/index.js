@@ -150,7 +150,7 @@ const NavBar = ({ setMobileNavOpen, openMobile }) => {
                 <Avatar
                   alt="User"
                   className={classes.avatar}
-                  src={`/static/images/avatars/${user.priority}.png`}
+                  src={`/static/images/avatars/${user?.priority}.png`}
                   variant="rounded"
                 />
               </RouterLink>
@@ -166,13 +166,13 @@ const NavBar = ({ setMobileNavOpen, openMobile }) => {
                 underline="none"
                 variant="h5"
               >
-                {user.display}
+                {user?.display}
               </Link>
               <Typography
                 color="textSecondary"
                 variant="body2"
               >
-                {roleFormatter(user.priority)}
+                {roleFormatter(user?.priority)}
               </Typography>
             </Box>
           </Box>
@@ -199,7 +199,7 @@ const NavBar = ({ setMobileNavOpen, openMobile }) => {
                       intl,
                       items: section.items,
                       pathname: location.pathname,
-                      priority: user.priority,
+                      priority: user?.priority,
                     })
                   }
                 </List>

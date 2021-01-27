@@ -54,14 +54,14 @@ const Account = () => {
         <Avatar
           alt="User"
           className={classes.avatar}
-          src={`/static/images/avatars/${user.priority}.png`}
+          src={`/static/images/avatars/${user?.priority}.png`}
         />
         <Hidden smDown>
           <Typography
             color="inherit"
             variant="h6"
           >
-            {user.display}
+            {user?.display}
           </Typography>
         </Hidden>
       </Box>

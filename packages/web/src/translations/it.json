@@ -140,5 +140,6 @@
   "booking.sender_recipient_data": "Sender and Recipient data",
   "certificates.list.header_title": "Retrieve Certificate",
   "menu_certificate_list": "Retrieve certificate",
-  "sub.bookings": "Bookings"
+  "sub.bookings": "Bookings",
+  "booking.error_bookingDate": "Invalid booking date format!"
 }

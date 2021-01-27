@@ -1,19 +1,13 @@
 import React, { memo, useCallback } from 'react'
-import { FastField } from 'formik'
+import { FastField, Field } from 'formik'
 import { Grid, TextField as TF } from '@material-ui/core'
 import { useIntl } from 'react-intl'
 import { messages } from 'src/translations/messages'
 import useNewBookingStore from 'src/zustandStore/useNewBookingStore'
 import shallow from 'zustand/shallow'
 import BookingAutocomplete from './BookingAutocomplete'
-/*const useStyles = makeStyles(theme => ({
-  backgroundTextArea: {
-    backgroundColor: theme.palette.grey[100],
-  },
-  toggleButtonGroup: {
-    marginLeft: theme.spacing(1.5),
-  },
-}))*/
+import { DatePicker } from '@material-ui/pickers'
+
 const { countryList, insuranceTypes } = useNewBookingStore.getState()
 const newBookingSelector = state => ({
   insuranceSelected: state.insuranceSelected,
@@ -60,11 +54,23 @@ const BookingDataFields = ({ handleChange, setFieldValue }) => {
         />
       </Grid>
       <Grid item sm={6} xs={12}>
-        <FastField
-          as={TF}
-          fullWidth
+        <Field
+          allowKeyboardControl
+          as={DatePicker}
+          emptyLabel="dd/mm/yyyy"
+          format="DD/MM/YYYY"
           label={intl.formatMessage(messages['booking_booking_date'])}
           name="bookingDate"
+          onChange={
+            newValue => {
+              setFieldValue('bookingDate', newValue)
+            }
+          }
+          renderInput={
+            props => {
+              return <TF {...props} fullWidth helperText={null} required/>
+            }
+          }
         />
       </Grid>
       <Grid item sm={6} xs={12}>

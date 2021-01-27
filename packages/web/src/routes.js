@@ -67,7 +67,7 @@ const routes = [
     guard: AuthGuard,
     layout: DashboardLayout,
     routes: [
-      {
+     /* {
         exact: true,
         private: [4, 3],
         path: [
@@ -75,24 +75,8 @@ const routes = [
           '/app/reports/browser/:docId',
         ],
         component: lazy(() => import('src/views/reports/Browser')),
-      },
-      {
-        exact: true,
-        path: [
-          '/app/reports/closing-day',
-          '/app/reports/closing-day/:docId',
-        ],
-        component: lazy(() => import('src/views/reports/ClosingDay')),
-      },
-      {
-        exact: true,
-        path: [
-          '/app/reports/running-tables',
-          '/app/reports/running-tables/:docId',
-        ],
-        component: lazy(() => import('src/views/reports/RunningTables')),
-      },
-      {
+      },*/
+    /*  {
         exact: true,
         path: [
           '/app/reports/closed-tables',
@@ -100,7 +84,7 @@ const routes = [
           '/app/reports/closed-tables/change-payment-method/:targetDocId',
         ],
         component: lazy(() => import('src/views/reports/ClosedTables')),
-      },
+      },*/
       {
         exact: true,
         path: '/app/reports/dashboard',

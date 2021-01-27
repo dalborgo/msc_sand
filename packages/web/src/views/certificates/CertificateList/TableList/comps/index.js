@@ -1,4 +1,4 @@
-import { Button, withStyles } from '@material-ui/core'
+import { Button, SvgIcon, withStyles } from '@material-ui/core'
 import React, { useState } from 'react'
 import { FormattedMessage } from 'react-intl'
 import Box from '@material-ui/core/Box'
@@ -7,8 +7,7 @@ import { IntegratedSummary } from '@devexpress/dx-react-grid'
 import { useMoneyFormatter } from 'src/utils/formatters'
 import { useGeneralStore } from 'src/zustandStore'
 import shallow from 'zustand/shallow'
-import PictureAsPdfOutlinedIcon from '@material-ui/icons/PictureAsPdfOutlined'
-
+import { ExternalLink as ExternalLinkIcon } from 'react-feather'
 export const summaryCalculator = (type, rows, getValue) => {
   if (type === 'incomeSum') {
     return rows.reduce((prev, curr) => {
@@ -81,7 +80,7 @@ const CellBase = props => {
             }
           }
           size="small"
-          startIcon={<PictureAsPdfOutlinedIcon />}
+          startIcon={<SvgIcon fontSize="small"><ExternalLinkIcon /></SvgIcon>}
           style={{ textTransform: 'none' }}
           variant="contained"
         >

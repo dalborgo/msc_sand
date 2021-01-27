@@ -140,5 +140,6 @@
   "booking.sender_recipient_data": "",
   "certificates.list.header_title": "",
   "menu_certificate_list": "",
-  "sub.bookings": ""
+  "sub.bookings": "",
+  "booking.error_bookingDate": ""
 }

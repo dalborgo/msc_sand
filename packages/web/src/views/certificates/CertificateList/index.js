@@ -11,8 +11,6 @@ import { getEffectiveFetching } from 'src/utils/logics'
 import { StandardBreadcrumb } from 'src/components/StandardBreadcrumb'
 import IconButtonLoader from 'src/components/IconButtonLoader'
 import TableList from './TableList'
-import useCertificateStore from 'src/zustandStore/useCertificateStore'
-import shallow from 'zustand/shallow'
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -26,25 +24,13 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const certificateSelector = state => ({
-  certificateRows: state.certificateRows,
-  setCertificateRows: state.setCertificateRows,
-})
-
 const CertificateList = () => {
   const classes = useStyles()
   const snackQueryError = useSnackQueryError()
   const intl = useIntl()
-  const { certificateRows, setCertificateRows } = useCertificateStore(certificateSelector, shallow)
-  const { isIdle, refetch, ...rest } = useQuery('certificates/list', {
+  const { data, isIdle, refetch, ...rest } = useQuery('certificates/list', {
     refetchOnMount: false,
     onError: snackQueryError,
-    onSettled: data => {
-      console.log('data list:', data)
-      if (data?.ok) {
-        setCertificateRows(data.results)
-      }
-    },
   })
   const effectiveFetching = getEffectiveFetching(rest)
   return (
@@ -74,7 +60,7 @@ const CertificateList = () => {
       </div>
       <Box alignItems="center" display="flex" p={2} pt={0}/>
       <Paper className={classes.paper}>
-        <TableList isFetching={effectiveFetching && !certificateRows.length} isIdle={isIdle} rows={certificateRows}/>
+        <TableList isFetching={effectiveFetching && !data?.results?.length} isIdle={isIdle} rows={data?.results || []}/>
       </Paper>
     </Page>
   )
