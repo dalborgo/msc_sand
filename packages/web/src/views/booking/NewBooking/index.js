@@ -15,6 +15,7 @@ import { useGeneralStore } from 'src/zustandStore'
 import shallow from 'zustand/shallow'
 import { useSnackbar } from 'notistack'
 import useAuth from 'src/hooks/useAuth'
+import { useConfirm } from 'material-ui-confirm'
 
 const useStyles = makeStyles(theme => ({
   page: {
@@ -39,6 +40,7 @@ const NewBooking = () => {
   const snackQueryError = useSnackQueryError()
   const { enqueueSnackbar } = useSnackbar()
   const classes = useStyles()
+  const confirm = useConfirm()
   const queryClient = useQueryClient()
   const intl = useIntl()
   const submitRef = useRef()
@@ -96,7 +98,7 @@ const NewBooking = () => {
             policyHolders: '',
             portDischarge: null,
             portLoading: null,
-            rate: '',
+            rate: '7,50',
             recipient: 'To the orders as per Bill of Lading',
             reeferContainer: false,
             sender: 'MSC for whom it may concern',
@@ -112,12 +114,14 @@ const NewBooking = () => {
         onSubmit={
           async (values, { resetForm }) => {
             try {
+              await confirm({ description: intl.formatMessage(messages['booking_confirm_save']) })
               const newValues = checkValues(values)
               const { ok } = await saveCertificate({ ...newValues, _createdBy: user.display })
               ok && resetForm()
               return true
-            } catch ({ message }) {
-              enqueueSnackbar(messages[message] ? intl.formatMessage(messages[message]) : message)
+            } catch (err) {
+              const { message } = err || {}
+              message && enqueueSnackbar(messages[message] ? intl.formatMessage(messages[message]) : message)
             }
           }
         }

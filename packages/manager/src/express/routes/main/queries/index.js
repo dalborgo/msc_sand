@@ -100,7 +100,7 @@ function addRouters (router) {
       results,
       message,
       info,
-    } = await couchQueries.execByService(statement, connClass.astConnection, options)
+    } = await couchQueries.execByService(statement, connClass.projConnection, options)
     if (!ok) {return res.send({ ok, message, info })}
     res.send({ ok, results })
   })

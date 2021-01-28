@@ -1,9 +1,25 @@
 import { defineMessages } from 'react-intl'
 
 export const messages = defineMessages({
+  common_cancel: {
+    id: 'common.cancel',
+    defaultMessage: 'cancel',
+  },
+  common_confirm: {
+    id: 'common.confirm',
+    defaultMessage: 'confirm',
+  },
+  common_confirm_operation: {
+    id: 'common.confirm_operation',
+    defaultMessage: 'Confirm operation',
+  },
   common_no_options: {
     id: 'common.no_options',
     defaultMessage: 'No options',
+  },
+  booking_confirm_save: {
+    id: 'booking.confirm_save',
+    defaultMessage: 'Are you sure you want to save?',
   },
   booking_more_goods_details: {
     id: 'booking.more_goods_details',
@@ -24,6 +40,14 @@ export const messages = defineMessages({
   booking_vessel_mail: {
     id: 'booking.vessel_mail',
     defaultMessage: 'Vessel Mail',
+  },
+  certificates_column_code: {
+    id: 'certificates.column_code',
+    defaultMessage: 'Code',
+  },
+  certificates_column_actions: {
+    id: 'certificates.column_actions',
+    defaultMessage: 'Actions',
   },
   booking_save_certificate_ok: {
     id: 'booking.booking_save_certificate_ok',
@@ -135,7 +159,7 @@ export const messages = defineMessages({
   },
   common_rate: {
     id: 'common.rate',
-    defaultMessage: 'Tasso',
+    defaultMessage: 'Rate{min}',
   },
   common_tot: {
     id: 'common.tot',
@@ -216,6 +240,10 @@ export const messages = defineMessages({
   role_broker: {
     id: 'role.role_broker',
     defaultMessage: 'Broker',
+  },
+  role_msc: {
+    id: 'role.role_msc',
+    defaultMessage: 'Msc',
   },
   sub_reports: {
     id: 'sub.reports',

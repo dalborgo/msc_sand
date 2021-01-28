@@ -11,8 +11,10 @@ const setPriority = role => {
   switch (role) {
     case 'admin':
       return 4
-    default:
+    case 'broker':
       return 3
+    default:
+      return 2
   }
 }
 
@@ -23,6 +25,7 @@ function selectUserFields (identity) {
     priority: setPriority(identity.role),
   }
 }
+
 function getQueryUserField () {
   return '`user`.`user`, `user`.`role`, `user`.`locales` '
 }
@@ -32,13 +35,18 @@ function addRouters (router) {
     const { connClass, route: { path } } = req
     const { username, password } = req.body
     const query = 'SELECT '
-                  + getQueryUserField()+', meta(`user`).id _id '
+                  + getQueryUserField() + ', meta(`user`).id _id '
                   + 'FROM `' + connClass.projectBucketName + '` `user` '
                   + 'WHERE `user`.type = "USER_MANAGER" '
                   + 'AND LOWER(`user`.`user`) = $1 '
                   + 'AND `user`.`password` = $2'
     
-    const { ok, results, message, err } = await couchQueries.exec(query, connClass.cluster, { parameters: [username.toLowerCase().trim(), String(password).trim()] })
+    const {
+      ok,
+      results,
+      message,
+      err,
+    } = await couchQueries.exec(query, connClass.cluster, { parameters: [username.toLowerCase().trim(), String(password).trim()] })
     if (!ok) {
       log.error('path', path)
       throw Error(err.context ? err.context.first_error_message : message)
@@ -54,6 +62,8 @@ function addRouters (router) {
     )
     res.send({
       accessToken,
+      bucket: connClass.projectBucketName,
+      couchbaseUrl: connClass.host,
       locales: identity.locales || [],
       user: {
         ...selectUserFields(identity),
@@ -78,7 +88,8 @@ function addRouters (router) {
     }
     const [identity] = results
     res.send({
-      accessToken,
+      bucket: connClass.projectBucketName,
+      couchbaseUrl: connClass.host,
       locales: identity.locales || [],
       user: {
         ...selectUserFields(identity),

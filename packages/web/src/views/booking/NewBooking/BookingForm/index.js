@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
       fontSize: '0.9rem',
     },
     '& .MuiOutlinedInput-multiline, .MuiOutlinedInput-adornedEnd, .MuiAutocomplete-root, .MuiInputBase-input ': {
-      backgroundColor: theme.palette.grey[100],
+      backgroundColor: theme.palette.background.dark,
     },
     '& .MuiSwitch-root': {
       marginTop: -2,

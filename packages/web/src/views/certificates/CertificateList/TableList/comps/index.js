@@ -1,4 +1,4 @@
-import { Button, SvgIcon, withStyles } from '@material-ui/core'
+import { Button, Link, SvgIcon, withStyles } from '@material-ui/core'
 import React, { useState } from 'react'
 import { FormattedMessage } from 'react-intl'
 import Box from '@material-ui/core/Box'
@@ -10,6 +10,8 @@ import shallow from 'zustand/shallow'
 import { ExternalLink as ExternalLinkIcon } from 'react-feather'
 import { manageFile } from 'src/utils/axios'
 import { useSnackbar } from 'notistack'
+import useAuth from 'src/hooks/useAuth'
+
 export const summaryCalculator = (type, rows, getValue) => {
   if (type === 'incomeSum') {
     return rows.reduce((prev, curr) => {
@@ -61,14 +63,33 @@ export const SummaryCellBase = props => {
   }
 }
 const loadingSel = state => ({ setLoading: state.setLoading, loading: state.loading })
-
+const { bucket, couchbaseUrl } = useGeneralStore.getState()
 const CellBase = props => {
-  const { column, row, theme } = props
+  const { column, row, theme, value } = props
+  const { user: { priority } } = useAuth()
   const { setLoading } = useGeneralStore(loadingSel, shallow)
   const [intLoading, setIntLoading] = useState(false)
   const { enqueueSnackbar } = useSnackbar()
   const cellStyle = { paddingLeft: theme.spacing(2) }
-  if (column.name === 'action') {
+  if (column.name === 'code') {
+    return (
+      <Table.Cell {...props} style={{ paddingLeft: theme.spacing(2) }}>
+        {
+          priority === 4 ?
+            <Link
+              color="inherit"
+              href={`http://${couchbaseUrl}:8091/ui/index.html#!/buckets/documents/CERTIFICATE%7C${value}?bucket=${bucket}`}
+              target="_blank"
+            >
+              {value}
+            </Link>
+            :
+            value
+        }
+      </Table.Cell>
+    )
+  }
+  if (column.name === 'actions') {
     return (
       <Table.Cell {...props}>
         <Button
@@ -81,7 +102,7 @@ const CellBase = props => {
                 `certificates/print/${row.code}`,
                 `${row.code}.pdf`,
                 'application/pdf',
-                {toSave: false},
+                { toSave: false },
                 { toDownload: false }
               )
               setIntLoading(false)
@@ -90,7 +111,7 @@ const CellBase = props => {
             }
           }
           size="small"
-          startIcon={<SvgIcon fontSize="small"><ExternalLinkIcon /></SvgIcon>}
+          startIcon={<SvgIcon fontSize="small"><ExternalLinkIcon/></SvgIcon>}
           style={{ textTransform: 'none' }}
           variant="contained"
         >

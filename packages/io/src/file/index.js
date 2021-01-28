@@ -6,8 +6,9 @@ import pdftk from 'node-pdftk'
 import PizZip from 'pizzip'
 import toPdf from 'office-to-pdf'
 import path from 'path'
+import AwaitLock from 'await-lock'
 
-async function fillDocxTemplate (templatePath, data, undefString = ' ') {
+async function fillDocxTemplate (templatePath, data, undefString = '') {
   try {
     const nullGetter = part => part.module ? '' : undefString
     const template = await Q.ninvoke(fs, 'readFile', templatePath)
@@ -24,10 +25,18 @@ async function fillDocxTemplate (templatePath, data, undefString = ' ') {
   }
 }
 
+const lock = new AwaitLock()
 async function docxToPdf (buffer) {
+  await lock.acquireAsync()
   try {
-    const results = await toPdf(buffer)
-    return { ok: true, results }
+    {
+      try {
+        const results = await toPdf(buffer)
+        return { ok: true, results }
+      } finally {
+        lock.release()
+      }
+    }
   } catch (err) {
     log.error(err.message)
     return { ok: false, message: err.message, err }

@@ -5,6 +5,7 @@ import padStart from 'lodash/padStart'
 import path from 'path'
 import fs from 'fs'
 import Q from 'q'
+import log from '@adapter/common/src/winston'
 
 const { utils, axios } = require(__helpers)
 const INITIAL_COUNT = 1000
@@ -27,6 +28,7 @@ const listFields = ['code']
 function addRouters (router) {
   router.post('/certificates/save', async function (req, res) {
     const { connClass, body } = req
+    log.info('req.body', body)
     const { ok, results: sequence, message, err } = await getSequence(connClass)
     if (!ok) {return res.send({ ok, message, err })}
     const { projectBucketCollection: collection } = connClass

@@ -67,7 +67,7 @@ export default class Couchbase {
     return this._project
   }
   
-  get astConnection () {
+  get projConnection () {
     return {
       BUCKET: this.projectBucket,
       BUCKET_NAME: this.projectBucketName,

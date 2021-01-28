@@ -1,14 +1,14 @@
 import React, { Fragment, lazy, Suspense } from 'react'
 import { Redirect, Route, Switch } from 'react-router-dom'
 import DashboardLayout from 'src/layouts/DashboardLayout'
-import LoadingScreen from 'src/components/LoadingScreen'
 import AuthGuard from 'src/components/AuthGuard'
 import GuestGuard from 'src/components/GuestGuard'
 import { isMenuLinkToShow } from './utils/logics'
+import SplashScreen from './components/SplashScreen'
 
 export const renderRoutes = (routes = [], priority) => {
   return (
-    <Suspense fallback={<LoadingScreen/>}>
+    <Suspense fallback={<SplashScreen/>}>
       <Switch>
         {
           routes.reduce((acc, route, index) => {

@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import { FastField } from 'formik'
-import { Grid, InputLabel, makeStyles, TextField as TF } from '@material-ui/core'
+import { Grid, InputLabel, TextField as TF } from '@material-ui/core'
 import NumberFormatComp from 'src/components/NumberFormatComp'
 import { useIntl } from 'react-intl'
 import { messages } from 'src/translations/messages'
@@ -9,14 +9,8 @@ import ToggleButton from '@material-ui/lab/ToggleButton'
 import MandatoryToggleButtonGroup from 'src/utils/formik/MandatoryToggleButtonGroup'
 import useNewBookingStore from 'src/zustandStore/useNewBookingStore'
 
-const useStyles = makeStyles(theme => ({
-  toggleButtonGroup: {
-    marginLeft: theme.spacing(1.5),
-  },
-}))
 const { typesOfGoods } = useNewBookingStore.getState()
 const ContainerDataFields = ({ handleChange }) => {
-  const classes = useStyles()
   const intl = useIntl()
   console.log('%cRENDER_FORM', 'color: orange')
   return (
@@ -79,11 +73,11 @@ const ContainerDataFields = ({ handleChange }) => {
           >
             {intl.formatMessage(messages['booking_currency_goods'])}
             <FastField
-              className={classes.toggleButtonGroup}
               component={MandatoryToggleButtonGroup}
               exclusive
               name="currencyGoods"
               size="small"
+              style={{ marginLeft: 10 }}
               type="checkbox"
             >
               <ToggleButton disableRipple value="EUR">
@@ -134,7 +128,7 @@ const ContainerDataFields = ({ handleChange }) => {
         <Grid item sm={6} xs={12}>
           <InputLabel
             htmlFor="reeferContainer"
-            style={{height: 20}}
+            style={{ height: 20 }}
           >
             {intl.formatMessage(messages['booking_reefer_container'])}
             <FastField
@@ -145,7 +139,7 @@ const ContainerDataFields = ({ handleChange }) => {
           </InputLabel>
           <InputLabel
             htmlFor="acceptedByMSC"
-            style={{whiteSpace: 'nowrap'}}
+            style={{ whiteSpace: 'nowrap' }}
           >
             {intl.formatMessage(messages['accepted_by_msc'])}
             <FastField

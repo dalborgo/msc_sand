@@ -2,7 +2,17 @@ import React from 'react'
 import NumberFormat from 'react-number-format'
 
 const NumberFormatComp = props => {
-  const { inputRef, max, min, thousandSeparator, decimalScale = 0, prefix, fixedDecimalScale, textAlign = 'right', ...other } = props
+  const {
+    inputRef,
+    max,
+    min,
+    thousandSeparator,
+    decimalScale = 0,
+    prefix,
+    fixedDecimalScale,
+    textAlign = 'right',
+    ...other
+  } = props
   return (
     <NumberFormat
       {...other}
@@ -13,7 +23,7 @@ const NumberFormatComp = props => {
       getInputRef={inputRef}
       inputMode="numeric"
       isAllowed={
-        (values) => {
+        values => {
           const { floatValue = 0 } = values
           let res = true
           if (max) {res &= floatValue <= max}

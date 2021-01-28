@@ -86,7 +86,7 @@ export const AuthProvider = ({ children }) => {
   const { saveSettings, settings } = useSettings()
   const login = async (username, password) => {
     const response = await axiosLocalInstance.post('jwt/login', { username, password })
-    const { accessToken, user, locales } = response.data
+    const { accessToken, user, locales, bucket, couchbaseUrl } = response.data
     if (locales.length) {
       const [locale] = locales
       if (!settings.locale || !locales.includes(settings.locale)) {
@@ -94,7 +94,7 @@ export const AuthProvider = ({ children }) => {
       }
     }
     setSession({ accessToken })
-    useGeneralStore.setState({ priority: user.priority, locales })
+    useGeneralStore.setState({ priority: user.priority, locales, bucket, couchbaseUrl })
     dispatch({
       type: 'LOGIN',
       payload: {
@@ -117,8 +117,8 @@ export const AuthProvider = ({ children }) => {
         if (accessToken && isValidToken(accessToken)) {
           setSession({ accessToken })
           const response = await axiosLocalInstance.get('jwt/me')
-          let { user, locales } = response.data
-          useGeneralStore.setState({ priority: user.priority, locales })
+          let { user, locales, bucket, couchbaseUrl } = response.data
+          useGeneralStore.setState({ priority: user.priority, locales, bucket, couchbaseUrl })
           dispatch({
             type: 'INITIALISE',
             payload: {

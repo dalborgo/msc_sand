@@ -1,9 +1,10 @@
 import React, { useRef, useState } from 'react'
-import { Link as RouterLink, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { useSnackbar } from 'notistack'
 import { Avatar, Box, ButtonBase, Hidden, makeStyles, Menu, MenuItem, Typography } from '@material-ui/core'
 import useAuth from 'src/hooks/useAuth'
 import log from '@adapter/common/src/log'
+
 const useStyles = makeStyles(theme => ({
   avatar: {
     height: 32,
@@ -74,18 +75,6 @@ const Account = () => {
         PaperProps={{ className: classes.popover }}
         transitionDuration={0}
       >
-        <MenuItem
-          component={RouterLink}
-          to="/app/social/profile"
-        >
-          Profile
-        </MenuItem>
-        <MenuItem
-          component={RouterLink}
-          to="/app/account"
-        >
-          Account
-        </MenuItem>
         <MenuItem onClick={handleLogout}>
           Logout
         </MenuItem>
