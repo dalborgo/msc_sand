@@ -1,13 +1,14 @@
 import reduce from 'lodash/reduce'
 import sortBy from 'lodash/sortBy'
+import find from 'lodash/find'
 
 export const getTypeOfGoods = () => {
   return require('./files/typeOfGoods.json')
 }
 
-export const getTypeOfGood = code => {
+export const getTypeOfGood = key => {
   const types = require('./files/typeOfGoods.json')
-  return types[code]
+  return find(types, { key }) || {}
 }
 
 export const getCountryList = () => {

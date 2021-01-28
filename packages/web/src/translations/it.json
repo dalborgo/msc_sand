@@ -131,7 +131,7 @@
   "booking.sender": "Sender",
   "booking.special_conditions": "Special conditions",
   "booking.type_goods": "Type of goods",
-  "booking.vessel_name": "Vessel name",
+  "booking.vessel_name": "Vessel name (if already known)",
   "common.no_options": "No options",
   "common.rate": "Tasso",
   "role.role_broker": "Broker",
@@ -145,7 +145,7 @@
   "booking.departure_date": "Date of departure",
   "booking.policy_holders": "Policy Holders",
   "booking.goods_quantity": "Goods quantity",
-  "booking.goods_weigh": "Goods weight (Kg)",
+  "booking.goods_weigh": "Goods weight (kg)",
   "booking.header_data": "Header data",
   "booking.vessel_phone": "Vessel Phone",
   "booking.vessel_mail": "Vessel Mail"

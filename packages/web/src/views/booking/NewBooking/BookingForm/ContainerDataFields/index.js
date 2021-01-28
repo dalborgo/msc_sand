@@ -22,7 +22,7 @@ const ContainerDataFields = ({ handleChange }) => {
   return (
     <>
       <Grid alignItems="center" container>
-        <Grid item sm={4} xs={12}>
+        <Grid item sm={6} xs={12}>
           <FastField
             as={TF}
             fullWidth
@@ -39,7 +39,7 @@ const ContainerDataFields = ({ handleChange }) => {
             name="numberContainers"
           />
         </Grid>
-        <Grid item sm={4} xs={12}>
+        <Grid item sm={6} xs={12}>
           <FastField
             as={TF}
             fullWidth
@@ -54,23 +54,6 @@ const ContainerDataFields = ({ handleChange }) => {
             }
             label={intl.formatMessage(messages['booking_goods_weight'])}
             name="goodsWeight"
-          />
-        </Grid>
-        <Grid item sm={4} xs={12}>
-          <FastField
-            as={TF}
-            fullWidth
-            InputProps={
-              {
-                inputComponent: NumberFormatComp,
-                inputProps: {
-                  thousandSeparator: '.',
-                  decimalScale: 0,
-                },
-              }
-            }
-            label={intl.formatMessage(messages['booking_goods_quantity'])}
-            name="goodsQuantity"
           />
         </Grid>
         <Grid item sm={6} xs={12}>

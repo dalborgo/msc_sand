@@ -1,11 +1,16 @@
-import { couchQueries } from '@adapter/io'
+import { couchQueries, ioFiles } from '@adapter/io'
+import { generateInput } from './utils'
 import { validation } from '@adapter/common'
-import { ioFiles } from '@adapter/io'
 import padStart from 'lodash/padStart'
 import path from 'path'
+import fs from 'fs'
+import Q from 'q'
+
 const { utils, axios } = require(__helpers)
 const INITIAL_COUNT = 1000
+
 const knex = require('knex')({ client: 'mysql' })
+
 async function getSequence (connClass) {
   const statement = 'SELECT RAW '
                     + 'IFNULL(MAX(sequence), 0) '
@@ -16,14 +21,16 @@ async function getSequence (connClass) {
   let [sequence] = results
   return { ok, results: sequence ? ++sequence : INITIAL_COUNT + 1 }
 }
+
 const listFields = ['code']
+
 function addRouters (router) {
   router.post('/certificates/save', async function (req, res) {
     const { connClass, body } = req
     const { ok, results: sequence, message, err } = await getSequence(connClass)
     if (!ok) {return res.send({ ok, message, err })}
     const { projectBucketCollection: collection } = connClass
-    const code = `IT${padStart(sequence, 6, '0')}`
+    const code = `${padStart(sequence, 6, '0')}`
     const input = {
       ...body,
       _createdAt: (new Date()).toISOString(),
@@ -32,7 +39,7 @@ function addRouters (router) {
       type: 'CERTIFICATE',
     }
     await collection.insert(`CERTIFICATE|${code}`, input)
-   /* axios.localInstance(`certificates/print/${code}`, { //in parallelo
+    /* axios.localInstance(`certificates/print/${code}`, { //in parallelo
       data: { toSave: true },
       method: 'POST',
       responseType: 'blob',
@@ -57,13 +64,23 @@ function addRouters (router) {
   })
   
   router.post('/certificates/print/:code', async function (req, res) {
-    const { connClass, params, body } = req, partial = {}
+    const basePath = 'src/express'
+    const { connClass: { projectBucketCollection: collection }, params, body } = req, partial = {}
     utils.controlParameters(params, ['code'])
-    const filePath = path.resolve('src/express/public/templates/msc_certificate.docx')
     const { code } = params
     const fileName = `cert_${code}.pdf`
+    {
+      const savedFilePath = path.resolve(`${basePath}/crypt/${code}/${fileName}`)
+      const pathExists = fs.existsSync(savedFilePath)
+      if (pathExists) {
+        const data = await Q.nfcall(fs.readFile, savedFilePath)
+        return res.send(data)
+      }
+    }
+    const { content: certificate } = await collection.get(`CERTIFICATE|${code}`)
     const { toSave } = body
-    const input = {}
+    const input = generateInput(certificate)
+    const filePath = path.resolve(`${basePath}/public/templates/msc_certificate.docx`)
     {
       const { ok, message, results } = await ioFiles.fillDocxTemplate(filePath, input)
       if (!ok) {return res.status(412).send({ ok, message })}
@@ -76,10 +93,10 @@ function addRouters (router) {
       partial.correct &= ok
       res.send(results)
       if (partial.correct && toSave) {
-        await ioFiles.saveAndCreateDir(`src/express/crypt/${code}/`, fileName, results)
+        await ioFiles.saveAndCreateDir(`${basePath}/crypt/${code}/`, fileName, results)
       }
     }
-    res.send({ ok: true, code })
+    //res.send({ ok: true, results: generateInput(certificate) })
   })
 }
 

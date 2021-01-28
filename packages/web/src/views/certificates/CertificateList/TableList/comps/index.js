@@ -8,6 +8,8 @@ import { useMoneyFormatter } from 'src/utils/formatters'
 import { useGeneralStore } from 'src/zustandStore'
 import shallow from 'zustand/shallow'
 import { ExternalLink as ExternalLinkIcon } from 'react-feather'
+import { manageFile } from 'src/utils/axios'
+import { useSnackbar } from 'notistack'
 export const summaryCalculator = (type, rows, getValue) => {
   if (type === 'incomeSum') {
     return rows.reduce((prev, curr) => {
@@ -61,9 +63,10 @@ export const SummaryCellBase = props => {
 const loadingSel = state => ({ setLoading: state.setLoading, loading: state.loading })
 
 const CellBase = props => {
-  const { column, theme } = props
+  const { column, row, theme } = props
   const { setLoading } = useGeneralStore(loadingSel, shallow)
   const [intLoading, setIntLoading] = useState(false)
+  const { enqueueSnackbar } = useSnackbar()
   const cellStyle = { paddingLeft: theme.spacing(2) }
   if (column.name === 'action') {
     return (
@@ -74,9 +77,16 @@ const CellBase = props => {
             async () => {
               setLoading(true)
               setIntLoading(true)
-              console.log('clicked')
+              const { ok, message } = await manageFile(
+                `certificates/print/${row.code}`,
+                `${row.code}.pdf`,
+                'application/pdf',
+                {toSave: false},
+                { toDownload: false }
+              )
               setIntLoading(false)
               setLoading(false)
+              !ok && enqueueSnackbar(message)
             }
           }
           size="small"

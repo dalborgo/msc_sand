@@ -95,7 +95,7 @@ export const messages = defineMessages({
   },
   booking_vessel_name: {
     id: 'booking.vessel_name',
-    defaultMessage: 'Vessel name',
+    defaultMessage: 'Vessel name (if already known)',
   },
   booking_sender: {
     id: 'booking.sender',
@@ -111,7 +111,7 @@ export const messages = defineMessages({
   },
   booking_goods_weight: {
     id: 'booking.goods_weigh',
-    defaultMessage: 'Goods weight (Kg)',
+    defaultMessage: 'Goods weight (kg)',
   },
   booking_goods_quantity: {
     id: 'booking.goods_quantity',

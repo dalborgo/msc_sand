@@ -97,7 +97,7 @@
   },
   {
     "id": "booking.goods_weigh",
-    "defaultMessage": "Goods weight (Kg)"
+    "defaultMessage": "Goods weight (kg)"
   },
   {
     "id": "booking.header_data",
@@ -177,7 +177,7 @@
   },
   {
     "id": "booking.vessel_name",
-    "defaultMessage": "Vessel name"
+    "defaultMessage": "Vessel name (if already known)"
   },
   {
     "id": "booking.vessel_phone",

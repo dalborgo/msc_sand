@@ -9,6 +9,7 @@
 /packages/web/node_modules/
 /packages/web/build/
 yarn.lock
+~*.docx
 /packages/web/.eslintcache
 /packages/web/.env
 /packages/manager/src/express/routes/main/routines/files/
