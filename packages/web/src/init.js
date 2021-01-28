@@ -5,7 +5,7 @@ const REACT_APP = isProd ? 'REACT_APP' : 'REACT_APP_DEV'
 const wlh = window.location.hostname
 const ORIGIN = window.location.origin
 const PROTOCOL = window.location.protocol || 'http:'
-const BACKEND_PORT = PROTOCOL === 'http:' ? process.env[`${REACT_APP}_BACKEND_PORT`] : parseInt(process.env[`${REACT_APP}_BACKEND_PORT`],10) + 1000
+const BACKEND_PORT = PROTOCOL === 'http:' ? process.env[`${REACT_APP}_BACKEND_PORT`] : parseInt(process.env[`${REACT_APP}_BACKEND_PORT`], 10) + 1000
 const BACKEND_HOST = `${PROTOCOL}//${wlh}:${BACKEND_PORT}`
 const HOSTNAME = process.env[`${REACT_APP}_COUCHBASE_FOR_LINK`] ? process.env[`${REACT_APP}_COUCHBASE_FOR_LINK`] : wlh
 
