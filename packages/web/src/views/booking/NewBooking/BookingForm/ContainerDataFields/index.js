@@ -8,9 +8,10 @@ import { Switch } from 'formik-material-ui'
 import ToggleButton from '@material-ui/lab/ToggleButton'
 import MandatoryToggleButtonGroup from 'src/utils/formik/MandatoryToggleButtonGroup'
 import useNewBookingStore from 'src/zustandStore/useNewBookingStore'
+import { getMinimumRate } from 'src/utils/logics'
 
 const { typesOfGoods } = useNewBookingStore.getState()
-const ContainerDataFields = ({ handleChange }) => {
+const ContainerDataFields = ({ handleChange, setFieldValue }) => {
   const intl = useIntl()
   console.log('%cRENDER_FORM', 'color: orange')
   return (
@@ -133,7 +134,17 @@ const ContainerDataFields = ({ handleChange }) => {
             {intl.formatMessage(messages['booking_reefer_container'])}
             <FastField
               component={Switch}
+              id="reeferContainerField"
               name="reeferContainer"
+              onChange={
+                event => {
+                  handleChange(event)
+                  const elem = document.getElementById('importantCustomerField')
+                  if (elem) {
+                    setFieldValue('rate', getMinimumRate(elem.checked, event.target.checked))
+                  }
+                }
+              }
               type="checkbox"
             />
           </InputLabel>

@@ -1,13 +1,15 @@
 import React, { memo } from 'react'
-import { FastField } from 'formik'
+import { FastField, Field } from 'formik'
 import { Grid, InputAdornment, InputLabel, TextField as TF } from '@material-ui/core'
 import { useIntl } from 'react-intl'
 import { messages } from 'src/translations/messages'
 import { Switch } from 'formik-material-ui'
 import NumberFormatComp from 'src/components/NumberFormatComp'
 import useAuth from 'src/hooks/useAuth'
+import { numeric } from '@adapter/common'
+import { getMinimumRate } from 'src/utils/logics'
 
-const InsuranceDataFields = () => {
+const InsuranceDataFields = ({ handleChange, setFieldValue, minimumRateLabel }) => {
   const intl = useIntl()
   const { user: { priority } } = useAuth()
   return (
@@ -19,7 +21,17 @@ const InsuranceDataFields = () => {
           {intl.formatMessage(messages['booking_important_customer'])}
           <FastField
             component={Switch}
+            id="importantCustomerField"
             name="importantCustomer"
+            onChange={
+              event => {
+                handleChange(event)
+                const reeferContainerField = document.getElementById('reeferContainerField')
+                if (reeferContainerField) {
+                  setFieldValue('rate', getMinimumRate(event.target.checked, reeferContainerField.checked))
+                }
+              }
+            }
             type="checkbox"
           />
         </InputLabel>
@@ -27,7 +39,7 @@ const InsuranceDataFields = () => {
       {
         priority > 2 &&
         <Grid item sm={6} xs={12}>
-          <FastField
+          <Field
             as={TF}
             fullWidth
             InputProps={
@@ -35,8 +47,8 @@ const InsuranceDataFields = () => {
                 inputComponent: NumberFormatComp,
                 inputProps: {
                   thousandSeparator: '.',
-                  decimalScale: 2,
-                  min: priority === 3 ? 7.5 : 0,
+                  decimalScale: 3,
+                  min: minimumRateLabel ? numeric.normNumb(minimumRateLabel, false) : 0,
                   max: 100,
                 },
                 endAdornment: <InputAdornment position="end">%</InputAdornment>,
@@ -44,8 +56,8 @@ const InsuranceDataFields = () => {
             }
             label={
               intl.formatMessage(
-                messages['common_rate'],
-                { min: priority === 3 ? ' minimum: 7,50 %' : '' }
+                messages['common_rate_min'],
+                { min: minimumRateLabel ? ` minimum: ${minimumRateLabel} %` : '' }
               )
             }
             name="rate"

@@ -17,6 +17,14 @@ export const messages = defineMessages({
     id: 'common.no_options',
     defaultMessage: 'No options',
   },
+  common_yes: {
+    id: 'common.yes',
+    defaultMessage: 'Yes',
+  },
+  common_no: {
+    id: 'common.no',
+    defaultMessage: 'No',
+  },
   booking_confirm_save: {
     id: 'booking.confirm_save',
     defaultMessage: 'Are you sure you want to save?',
@@ -157,9 +165,13 @@ export const messages = defineMessages({
     id: 'booking.accepted_by_msc',
     defaultMessage: 'I declare to ship goods accepted by MSC *',
   },
+  common_rate_min: {
+    id: 'common.rate_min',
+    defaultMessage: 'Rate{min}',
+  },
   common_rate: {
     id: 'common.rate',
-    defaultMessage: 'Rate{min}',
+    defaultMessage: 'Rate',
   },
   common_tot: {
     id: 'common.tot',

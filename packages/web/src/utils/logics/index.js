@@ -11,3 +11,16 @@ export const getEffectiveFetching = ({
   isSuccess,
   isFetchedAfterMount,
 }) => isFetching && (!isSuccess || isFetchedAfterMount)
+
+export const getMinimumRate = (importantCustomer, reeferContainer) => {
+  if(importantCustomer && reeferContainer){
+    return '0,150'
+  }
+  if(importantCustomer && !reeferContainer){
+    return '0,125'
+  }
+  if(!importantCustomer && reeferContainer){
+    return '0,200'
+  }
+  return '0,175'
+}

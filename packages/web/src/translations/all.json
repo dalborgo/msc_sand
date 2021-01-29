@@ -301,7 +301,7 @@
   },
   {
     "id": "common.rate",
-    "defaultMessage": "Rate{min}"
+    "defaultMessage": "Rate"
   },
   {
     "id": "common.reversals",

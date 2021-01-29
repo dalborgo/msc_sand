@@ -12,6 +12,7 @@ import { checkValues } from './validate'
 import { axiosLocalInstance, useSnackQueryError } from 'src/utils/reactQueryFunctions'
 import { useMutation, useQueryClient } from 'react-query'
 import { useGeneralStore } from 'src/zustandStore'
+import parse from 'html-react-parser'
 import shallow from 'zustand/shallow'
 import { useSnackbar } from 'notistack'
 import useAuth from 'src/hooks/useAuth'
@@ -34,6 +35,12 @@ const saveCertificateMutation = async values => {
   })
   return data
 }
+
+const getConfirmText = (values, intl) =>
+  intl.formatMessage(messages['booking_confirm_save']) + '<br/>' +
+  intl.formatMessage(messages['booking_important_customer']) + ': <strong>' + (values.importantCustomer ? intl.formatMessage(messages['common_yes']) : intl.formatMessage(messages['common_no'])) + '</strong><br/>' +
+  intl.formatMessage(messages['booking_reefer_container']) + ': <strong>' + values.reeferContainer + '</strong><br/>' +
+  intl.formatMessage(messages['common_rate']) + ': <strong>' + values.rate + ' %</strong>'
 
 const loadingSel = state => ({ setLoading: state.setLoading })
 const NewBooking = () => {
@@ -98,7 +105,7 @@ const NewBooking = () => {
             policyHolders: '',
             portDischarge: null,
             portLoading: null,
-            rate: '7,50',
+            rate: '0,175', //rate vip, normal container
             recipient: 'To the orders as per Bill of Lading',
             reeferContainer: false,
             sender: 'MSC for whom it may concern',
@@ -114,7 +121,9 @@ const NewBooking = () => {
         onSubmit={
           async (values, { resetForm }) => {
             try {
-              await confirm({ description: intl.formatMessage(messages['booking_confirm_save']) })
+              await confirm({
+                description: parse(getConfirmText(values, intl)),
+              })
               const newValues = checkValues(values)
               const { ok } = await saveCertificate({ ...newValues, _createdBy: user.display })
               ok && resetForm()

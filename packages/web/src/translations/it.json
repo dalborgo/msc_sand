@@ -113,7 +113,7 @@
   "booking.type_goods": "Type of goods",
   "booking.vessel_name": "Vessel name (if already known)",
   "common.no_options": "No options",
-  "common.rate": "Rate{min}",
+  "common.rate": "Rate",
   "role.role_broker": "Broker",
   "booking.booking_data": "Booking data",
   "booking.insurance_data": "Insurance data",

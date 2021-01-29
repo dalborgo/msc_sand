@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React, { memo, useMemo } from 'react'
 import { Card, makeStyles, Typography } from '@material-ui/core'
 import { FormattedMessage } from 'react-intl'
 import ContainerDataFields from './ContainerDataFields'
@@ -6,6 +6,8 @@ import { useFormikContext } from 'formik'
 import HeaderDataFields from './HeaderDataFields'
 import BookingDataFields from './BookingDataFields'
 import InsuranceDataFields from './InsuranceDataFields'
+import useAuth from 'src/hooks/useAuth'
+import { getMinimumRate } from 'src/utils/logics'
 
 const useStyles = makeStyles(theme => ({
   divContainer: {
@@ -35,7 +37,10 @@ const useStyles = makeStyles(theme => ({
 
 const BookingForm = () => {
   const classes = useStyles()
-  const { handleChange, setFieldValue } = useFormikContext()
+  const { handleChange, setFieldValue, values } = useFormikContext()
+  const { user: { priority } } = useAuth()
+  const minimumRateLabel = useMemo(() => priority === 3 ? getMinimumRate(values.importantCustomer, values.reeferContainer) : '',
+    [priority, values.importantCustomer, values.reeferContainer])
   return (
     <div className={classes.divContainer} id="bookingForm">
       <Typography color="secondary" gutterBottom>
@@ -48,7 +53,7 @@ const BookingForm = () => {
         <FormattedMessage defaultMessage="Container data" id="booking.container_data"/>
       </Typography>
       <Card>
-        <ContainerDataFields handleChange={handleChange}/>
+        <ContainerDataFields handleChange={handleChange} setFieldValue={setFieldValue}/>
       </Card>
       <Typography color="secondary" gutterBottom>
         <FormattedMessage defaultMessage="Booking data" id="booking.booking_data"/>
@@ -60,7 +65,11 @@ const BookingForm = () => {
         <FormattedMessage defaultMessage="Insurance data" id="booking.insurance_data"/>
       </Typography>
       <Card>
-        <InsuranceDataFields/>
+        <InsuranceDataFields
+          handleChange={handleChange}
+          minimumRateLabel={minimumRateLabel}
+          setFieldValue={setFieldValue}
+        />
       </Card>
     </div>
   )
