@@ -1,6 +1,6 @@
-import React, { memo } from 'react'
+import React, { memo, useMemo } from 'react'
 import { FastField, Field } from 'formik'
-import { Grid, InputAdornment, InputLabel, TextField as TF } from '@material-ui/core'
+import { Grid, InputAdornment, InputLabel, makeStyles, TextField as TF } from '@material-ui/core'
 import { useIntl } from 'react-intl'
 import { messages } from 'src/translations/messages'
 import { Switch } from 'formik-material-ui'
@@ -9,9 +9,25 @@ import useAuth from 'src/hooks/useAuth'
 import { numeric } from '@adapter/common'
 import { getMinimumRate } from 'src/utils/logics'
 
-const InsuranceDataFields = ({ handleChange, setFieldValue, minimumRateLabel }) => {
+const useStyles = makeStyles(theme => ({
+  notchedOutline: {
+    borderWidth: 1,
+    borderColor: theme.palette.text.primary,
+  },
+}))
+
+const rateHighlight = {
+  fontWeight: 'bold',
+}
+
+const InsuranceDataFields = ({ handleChange, setFieldValue, minimumRateLabel, rate }) => {
   const intl = useIntl()
+  const classes = useStyles()
   const { user: { priority } } = useAuth()
+  const rateModified = useMemo(
+    () => numeric.normNumb(rate) !== numeric.normNumb(minimumRateLabel),
+    [minimumRateLabel, rate]
+  )
   return (
     <Grid alignItems="center" container>
       <Grid item sm={6} style={{ paddingTop: 0 }} xs={12}>
@@ -48,17 +64,31 @@ const InsuranceDataFields = ({ handleChange, setFieldValue, minimumRateLabel }) 
                 inputProps: {
                   thousandSeparator: '.',
                   decimalScale: 3,
-                  min: minimumRateLabel ? numeric.normNumb(minimumRateLabel, false) : 0,
+                  min: minimumRateLabel && priority === 3 ? numeric.normNumb(minimumRateLabel, false) : 0,
                   max: 100,
                 },
-                endAdornment: <InputAdornment position="end">%</InputAdornment>,
+                classes: {
+                  notchedOutline: rateModified ? classes.notchedOutline : undefined,
+                },
+                style: rateModified ? rateHighlight : undefined,
+                endAdornment:
+                  (
+                    <InputAdornment position="end">
+                      <span style={rateModified ? rateHighlight : undefined}>%</span>
+                    </InputAdornment>
+                  ),
               }
             }
             label={
-              intl.formatMessage(
-                messages['common_rate_min'],
-                { min: minimumRateLabel ? ` minimum: ${minimumRateLabel} %` : '' }
-              )
+              priority === 3 ?
+                intl.formatMessage(
+                  messages['common_rate_min'],
+                  { min: minimumRateLabel ? `${minimumRateLabel} %` : '' }
+                )
+                :
+                intl.formatMessage(messages['common_rate_default'],
+                  { default: minimumRateLabel ? `${minimumRateLabel} %` : '' }
+                )
             }
             name="rate"
           />

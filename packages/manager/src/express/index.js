@@ -63,7 +63,7 @@ if (SESSION_ENABLED) {
     cookie: {
       maxAge: MAXAGE_MINUTES * 60 * 1000,
       sameSite: true,
-      secure: false, //true if https server
+      secure: false, // true if https server
     },
     name: 'mscSession',
     resave: true,

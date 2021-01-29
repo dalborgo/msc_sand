@@ -13,14 +13,22 @@ export const getEffectiveFetching = ({
 }) => isFetching && (!isSuccess || isFetchedAfterMount)
 
 export const getMinimumRate = (importantCustomer, reeferContainer) => {
-  if(importantCustomer && reeferContainer){
+  if (importantCustomer && reeferContainer) {
     return '0,150'
   }
-  if(importantCustomer && !reeferContainer){
+  if (importantCustomer && !reeferContainer) {
     return '0,125'
   }
-  if(!importantCustomer && reeferContainer){
+  if (!importantCustomer && reeferContainer) {
     return '0,200'
   }
   return '0,175'
+}
+
+export const getMaxGoodsValue = (reeferContainer, currencyGoods = 'EUR') => {
+  if (reeferContainer) {
+    return `150.000 ${currencyGoods}`
+  } else {
+    return `100.000 ${currencyGoods}`
+  }
 }

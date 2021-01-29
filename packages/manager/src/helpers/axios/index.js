@@ -7,7 +7,7 @@ const localInstance = axios.create({
   baseURL: `http://127.0.0.1:${PORT}/${NAMESPACE}`,
   headers: { internalcall: 1 },
   validateStatus: function (status) {
-    return (status >= 200 && status < 300) || status === 412 //il 412 lo uso come identificativo di una risposta errata
+    return (status >= 200 && status < 300) || status === 412 // il 412 lo uso come identificativo di una risposta errata
   },
 })
 

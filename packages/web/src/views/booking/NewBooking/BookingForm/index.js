@@ -7,7 +7,7 @@ import HeaderDataFields from './HeaderDataFields'
 import BookingDataFields from './BookingDataFields'
 import InsuranceDataFields from './InsuranceDataFields'
 import useAuth from 'src/hooks/useAuth'
-import { getMinimumRate } from 'src/utils/logics'
+import { getMaxGoodsValue, getMinimumRate } from 'src/utils/logics'
 
 const useStyles = makeStyles(theme => ({
   divContainer: {
@@ -39,8 +39,10 @@ const BookingForm = () => {
   const classes = useStyles()
   const { handleChange, setFieldValue, values } = useFormikContext()
   const { user: { priority } } = useAuth()
-  const minimumRateLabel = useMemo(() => priority === 3 ? getMinimumRate(values.importantCustomer, values.reeferContainer) : '',
+  const minimumRateLabel = useMemo(() => priority > 2 ? getMinimumRate(values.importantCustomer, values.reeferContainer) : '',
     [priority, values.importantCustomer, values.reeferContainer])
+  const maxGoodsValueLabel = useMemo(() => getMaxGoodsValue(values.reeferContainer, values.currencyGoods),
+    [values.currencyGoods, values.reeferContainer])
   return (
     <div className={classes.divContainer} id="bookingForm">
       <Typography color="secondary" gutterBottom>
@@ -53,7 +55,12 @@ const BookingForm = () => {
         <FormattedMessage defaultMessage="Container data" id="booking.container_data"/>
       </Typography>
       <Card>
-        <ContainerDataFields handleChange={handleChange} setFieldValue={setFieldValue}/>
+        <ContainerDataFields
+          goodsValue={values.goodsValue}
+          handleChange={handleChange}
+          maxGoodsValueLabel={maxGoodsValueLabel}
+          setFieldValue={setFieldValue}
+        />
       </Card>
       <Typography color="secondary" gutterBottom>
         <FormattedMessage defaultMessage="Booking data" id="booking.booking_data"/>
@@ -68,6 +75,7 @@ const BookingForm = () => {
         <InsuranceDataFields
           handleChange={handleChange}
           minimumRateLabel={minimumRateLabel}
+          rate={values.rate}
           setFieldValue={setFieldValue}
         />
       </Card>

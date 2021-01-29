@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import { FastField } from 'formik'
+import { FastField, Field } from 'formik'
 import { Grid, InputLabel, TextField as TF } from '@material-ui/core'
 import NumberFormatComp from 'src/components/NumberFormatComp'
 import { useIntl } from 'react-intl'
@@ -9,9 +9,10 @@ import ToggleButton from '@material-ui/lab/ToggleButton'
 import MandatoryToggleButtonGroup from 'src/utils/formik/MandatoryToggleButtonGroup'
 import useNewBookingStore from 'src/zustandStore/useNewBookingStore'
 import { getMinimumRate } from 'src/utils/logics'
+import { numeric } from '@adapter/common'
 
 const { typesOfGoods } = useNewBookingStore.getState()
-const ContainerDataFields = ({ handleChange, setFieldValue }) => {
+const ContainerDataFields = ({ handleChange, setFieldValue, maxGoodsValueLabel, goodsValue }) => {
   const intl = useIntl()
   console.log('%cRENDER_FORM', 'color: orange')
   return (
@@ -52,8 +53,9 @@ const ContainerDataFields = ({ handleChange, setFieldValue }) => {
           />
         </Grid>
         <Grid item sm={6} xs={12}>
-          <FastField
+          <Field
             as={TF}
+            error={numeric.normNumb(goodsValue, false) > numeric.normNumb(maxGoodsValueLabel, false)}
             fullWidth
             InputProps={
               {
@@ -61,10 +63,11 @@ const ContainerDataFields = ({ handleChange, setFieldValue }) => {
                 inputProps: {
                   thousandSeparator: '.',
                   decimalScale: 2,
+                  max: numeric.normNumb(maxGoodsValueLabel, false),
                 },
               }
             }
-            label={intl.formatMessage(messages['booking_value_goods'])}
+            label={intl.formatMessage(messages['booking_goods_value_max'], { max: maxGoodsValueLabel })}
             name="goodsValue"
           />
         </Grid>

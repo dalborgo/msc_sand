@@ -69,6 +69,10 @@ export const messages = defineMessages({
     id: 'booking.error_bookingDate',
     defaultMessage: 'Invalid booking date format!',
   },
+  booking_error_goodsValue: {
+    id: 'booking.error_goodsValue',
+    defaultMessage: 'The goods value exceeds the maximum!',
+  },
   booking_country_delivery_point: {
     id: 'booking.country_delivery_point',
     defaultMessage: 'Country of the delivery point',
@@ -149,9 +153,13 @@ export const messages = defineMessages({
     id: 'booking.goods_quantity',
     defaultMessage: 'Goods quantity',
   },
-  booking_value_goods: {
-    id: 'booking.value_goods',
+  booking_goods_value: {
+    id: 'booking.goods_value',
     defaultMessage: 'Value of the goods',
+  },
+  booking_goods_value_max: {
+    id: 'booking.goods_value_max',
+    defaultMessage: 'Value of the goods maximum: {max}',
   },
   booking_currency_goods: {
     id: 'booking.currency_goods',
@@ -167,7 +175,11 @@ export const messages = defineMessages({
   },
   common_rate_min: {
     id: 'common.rate_min',
-    defaultMessage: 'Rate{min}',
+    defaultMessage: 'Rate (minimum: {min})',
+  },
+  common_rate_default: {
+    id: 'common.rate_default',
+    defaultMessage: 'Rate (default: {default})',
   },
   common_rate: {
     id: 'common.rate',

@@ -14,7 +14,7 @@ const getTimeout = (ms = SWAGGER_TIMEOUT) => new Bluebird((resolve, reject, onCa
 
 const getClient = (host) => {
   spec.host = `${host}:${API_PORT}`
-  return new Swagger({ spec }) //return promise
+  return new Swagger({ spec }) // return promise
 }
 
 const getApis = async host => {
@@ -95,7 +95,7 @@ const postDbBulkGet = async (docs, arrayFirstIfError, objectGroup, connection = 
   return executeMultiPart('post__db___bulk_get', {
     db: BUCKET_NAME,
     BulkGetBody: { docs },
-  }, arrayFirstIfError, objectGroup, HOST) //objectGroup if '' returns array, arrayFirstIfError is array with [0] = default undefined value
+  }, arrayFirstIfError, objectGroup, HOST) // objectGroup if '' returns array, arrayFirstIfError is array with [0] = default undefined value
 }
 
 const getDbDoc = async (doc, connection = {}) => {

@@ -39,7 +39,7 @@ const saveCertificateMutation = async values => {
 const getConfirmText = (values, intl) =>
   intl.formatMessage(messages['booking_confirm_save']) + '<br/>' +
   intl.formatMessage(messages['booking_important_customer']) + ': <strong>' + (values.importantCustomer ? intl.formatMessage(messages['common_yes']) : intl.formatMessage(messages['common_no'])) + '</strong><br/>' +
-  intl.formatMessage(messages['booking_reefer_container']) + ': <strong>' + values.reeferContainer + '</strong><br/>' +
+  intl.formatMessage(messages['booking_reefer_container']) + ': <strong>' + (values.reeferContainer? intl.formatMessage(messages['common_yes']) : intl.formatMessage(messages['common_no'])) + '</strong><br/>' +
   intl.formatMessage(messages['common_rate']) + ': <strong>' + values.rate + ' %</strong>'
 
 const loadingSel = state => ({ setLoading: state.setLoading })
@@ -97,7 +97,9 @@ const NewBooking = () => {
             countryPortLoading: null,
             currencyGoods: 'EUR',
             departureDate: null,
+            goodsQuantity: '',
             goodsValue: '',
+            goodsWeight: '',
             importantCustomer: false,
             insuranceType: '',
             moreGoodsDetails: '',
@@ -105,26 +107,24 @@ const NewBooking = () => {
             policyHolders: '',
             portDischarge: null,
             portLoading: null,
-            rate: '0,175', //rate vip, normal container
+            rate: '0,175', // rate vip, normal container
             recipient: 'To the orders as per Bill of Lading',
             reeferContainer: false,
             sender: 'MSC for whom it may concern',
             specialConditions: '',
             typeOfGoods: '',
-            vesselName: '',
             vesselMail: '',
+            vesselName: '',
             vesselPhone: '',
-            goodsWeight: '',
-            goodsQuantity: '',
           }
         }
         onSubmit={
           async (values, { resetForm }) => {
             try {
+              const newValues = checkValues(values)
               await confirm({
                 description: parse(getConfirmText(values, intl)),
               })
-              const newValues = checkValues(values)
               const { ok } = await saveCertificate({ ...newValues, _createdBy: user.display })
               ok && resetForm()
               return true

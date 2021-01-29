@@ -25,7 +25,7 @@ export default class Couchbase {
   }
   
   get sgAdmin () {
-    return this._op['sgAdmin'] || `http://${HOST_DEFAULT}:4985` //ok with port
+    return this._op['sgAdmin'] || `http://${HOST_DEFAULT}:4985` // ok with port
   }
   
   get sgAdminToken () {
@@ -33,7 +33,7 @@ export default class Couchbase {
   }
   
   get sgPublic () {
-    return this._op['sgPublic'] || `http://${HOST_DEFAULT}:4984` //ok with port
+    return this._op['sgPublic'] || `http://${HOST_DEFAULT}:4984` // ok with port
   }
   
   get sgPublicToken () {
